@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-background h-full  text-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-semibold text-white;
+}
+
+p,
+span,
+a,
+li {
+	@apply text-gray font-medium;
+}
+
+.no-scrollbar {
+	::-webkit-scrollbar {
+		display: none;
+		height: 0;
+		width: 0;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 0.2rem;
+	height: 0.4rem;
+}
+
+
+
+::-webkit-scrollbar-thumb {
+	@apply bg-bordered cursor-pointer;
+}
+
+
+::-webkit-scrollbar-track {
+	@apply bg-transparent;
+}
+
+::-webkit-scrollbar-corner {
+	@apply bg-transparent;
+}
+
+pre {
+	padding: 1rem;
+	border-radius: 3px;
+}
+
+code {
+	text-align: left;
+	white-space: pre-wrap;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: break-word;
+	line-height: 1.5;
+}
