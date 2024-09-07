@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { CreateBookForm } from '@/app/admin/book/create/_create-form/create-form'
-import Loader from '@/components/ui/loader/loader'
-import { Suspense, type FC } from 'react'
+import Loader from '@/components/ui/loader/loader';
+import { type FC, Suspense } from 'react';
+import { CreateBookForm } from '@/pages/book/create/create-form/create-form';
 
 const Page: FC = () => (
 	<Suspense fallback={<Loader />}>

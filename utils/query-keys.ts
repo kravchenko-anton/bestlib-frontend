@@ -1,6 +1,6 @@
 export const QueryKeys = {
-	library: ['user.tsx-library'],
-	userStatistics: ['user.tsx-statisticds'],
+	library: ['user-library'],
+	userStatistics: ['user-statistics'],
 	featured: ['featured'],
 	recommendationGenres: ['recommendation-genres'],
 	searchByTerm: (searchTerm: string) => ['search-by-term', searchTerm],
@@ -90,7 +90,7 @@ export const MutationKeys = {
 		update: ['update-recommendation']
 	},
 	user: {
-		remove: ['remove-user.tsx'],
+		remove: ['remove-user'],
 		adjustGoal: ['adjust-goal'],
 		syncHistory: ['sync-history']
 	},

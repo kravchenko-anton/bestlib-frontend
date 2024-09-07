@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "api-client/*": ["../backend/api-client/*"]
+      "api-client/*": ["./api-client/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

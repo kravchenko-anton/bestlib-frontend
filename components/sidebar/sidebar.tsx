@@ -18,10 +18,13 @@ import { Book } from '@/icons/book';
 import { Logout } from '@/icons/logout';
 import { MoreHorizontal } from '@/icons/more-horizontal';
 import { secureRoutes } from '@/utils/route';
+import { Star } from '@/icons/star';
+import { UserPen } from '@/icons/user-pen';
 
 export const iconsList = [
 	{ icon: User, link: secureRoutes.userCatalogRoute, name: 'Users' },
-	{ icon: Book, link: secureRoutes.bookCatalogRoute, name: 'Books' }
+	{ icon: Book, link: secureRoutes.bookCatalogRoute, name: 'Books' },
+	{ icon: UserPen, link: secureRoutes.authorCatalogRoute, name: 'Author' }
 ]
 
 export const Sidebar: FC = () => {
@@ -37,7 +40,7 @@ export const Sidebar: FC = () => {
 					className='flex cursor-pointer items-center text-2xl font-bold xl:mb-5'
 					type='button'>
 					<motion.div className='rounded-full bg-white p-2' {...tapAnimation}>
-						<Book className='text-black' height={20} width={20} />
+						<Star className='text-black' height={20} width={20} />
 					</motion.div>
 				</button>
 				<ul className='hidden xl:block'>

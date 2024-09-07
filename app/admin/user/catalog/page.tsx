@@ -1,13 +1,8 @@
-'use client'
+'use client';
 
-import { UserTable } from '@/app/admin/user/catalog/_table/user-table'
-import Loader from '@/components/ui/loader/loader'
-import { Suspense, type FC } from 'react'
+import { type FC } from 'react';
+import { UserCatalog } from '@/pages/user/catalog/user-catalog';
 
-const Page: FC = () => (
-	<Suspense fallback={<Loader />}>
-		<UserTable />
-	</Suspense>
-)
+const Page: FC = () =><UserCatalog/>
 
 export default Page

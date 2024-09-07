@@ -16,6 +16,7 @@ const baseParameters = {
 	isJsonMime: () => true
 }
 
+
 const auth = new AuthApi(baseParameters, webServerURL, undefined)
 const parser = new ParserApi(baseParameters, webServerURL, undefined)
 
