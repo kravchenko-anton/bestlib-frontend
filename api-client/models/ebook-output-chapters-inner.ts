@@ -13,9 +13,6 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import type { EbookOutputChaptersInnerChildrenInner } from './ebook-output-chapters-inner-children-inner';
 
 /**
  * 
@@ -28,12 +25,12 @@ export interface EbookOutputChaptersInner {
      * @type {string}
      * @memberof EbookOutputChaptersInner
      */
-    'title': string;
+    'name': string;
     /**
      * 
-     * @type {Array<EbookOutputChaptersInnerChildrenInner>}
+     * @type {string}
      * @memberof EbookOutputChaptersInner
      */
-    'children': Array<EbookOutputChaptersInnerChildrenInner>;
+    'link': string;
 }
 

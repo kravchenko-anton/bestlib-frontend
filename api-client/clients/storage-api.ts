@@ -145,8 +145,7 @@ export class StorageApi extends BaseAPI {
  * @export
  */
 export const UploadFolderEnum = {
-    Ebooks: 'ebooks',
-    BooksCovers: 'booksCovers',
-    ImagesInBook: 'imagesInBook'
+    AuthorsPictures: 'authorsPictures',
+    BooksCovers: 'booksCovers'
 } as const;
 export type UploadFolderEnum = typeof UploadFolderEnum[keyof typeof UploadFolderEnum];

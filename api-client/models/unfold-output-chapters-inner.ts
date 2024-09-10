@@ -17,38 +17,26 @@
 /**
  * 
  * @export
- * @interface StoredEBookChaptersInner
+ * @interface UnfoldOutputChaptersInner
  */
-export interface StoredEBookChaptersInner {
+export interface UnfoldOutputChaptersInner {
     /**
      * 
      * @type {string}
-     * @memberof StoredEBookChaptersInner
-     */
-    'romanNumber': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StoredEBookChaptersInner
-     */
-    'readingTime': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoredEBookChaptersInner
+     * @memberof UnfoldOutputChaptersInner
      */
     'id': string;
     /**
      * 
      * @type {string}
-     * @memberof StoredEBookChaptersInner
+     * @memberof UnfoldOutputChaptersInner
      */
-    'name': string;
+    'title': string;
     /**
      * 
      * @type {string}
-     * @memberof StoredEBookChaptersInner
+     * @memberof UnfoldOutputChaptersInner
      */
-    'text': string;
+    'content': string;
 }
 

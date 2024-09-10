@@ -12,7 +12,6 @@ import {
 	ChartTooltip,
 	ChartTooltipContent
 } from '@/components/ui/chart';
-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@radix-ui/react-select';
 import { Color } from '@/utils/colors';
 
@@ -20,10 +19,6 @@ const chartConfig = {
 	readingTimeMin: {
 		label: 'Reading Time (min)',
 		color: Color.primary
-	},
-	pagesRead: {
-		label: 'Pages Read',
-		color: Color.success
 	},
 	progressDelta: {
 		label: 'Progress Delta',

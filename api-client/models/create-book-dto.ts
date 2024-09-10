@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { CreateBookDtoEbookInner } from './create-book-dto-ebook-inner';
+import type { CreateBookDtoChaptersInner } from './create-book-dto-chapters-inner';
 // May contain unused imports in some cases
 // @ts-ignore
 import type { UserCatalogOutputDataInnerSelectedGenresInner } from './user-catalog-output-data-inner-selected-genres-inner';
@@ -43,7 +43,25 @@ export interface CreateBookDto {
      * @type {string}
      * @memberof CreateBookDto
      */
+    'age': AgeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBookDto
+     */
     'authorId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBookDto
+     */
+    'summary': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBookDto
+     */
+    'concept': string;
     /**
      * 
      * @type {string}
@@ -52,16 +70,16 @@ export interface CreateBookDto {
     'description': string;
     /**
      * 
-     * @type {Array<CreateBookDtoEbookInner>}
-     * @memberof CreateBookDto
-     */
-    'ebook': Array<CreateBookDtoEbookInner>;
-    /**
-     * 
      * @type {number}
      * @memberof CreateBookDto
      */
     'rating': number;
+    /**
+     * 
+     * @type {Array<CreateBookDtoChaptersInner>}
+     * @memberof CreateBookDto
+     */
+    'chapters': Array<CreateBookDtoChaptersInner>;
     /**
      * 
      * @type {string}
@@ -70,15 +88,19 @@ export interface CreateBookDto {
     'picture': string;
     /**
      * 
-     * @type {string}
-     * @memberof CreateBookDto
-     */
-    'keyPoints': string;
-    /**
-     * 
      * @type {Array<UserCatalogOutputDataInnerSelectedGenresInner>}
      * @memberof CreateBookDto
      */
     'genres': Array<UserCatalogOutputDataInnerSelectedGenresInner>;
 }
+
+export const AgeEnum = {
+    All: 'all',
+    Kids: 'kids',
+    Teens: 'teens',
+    Adults: 'adults'
+} as const;
+
+export type AgeEnum = typeof AgeEnum[keyof typeof AgeEnum];
+
 

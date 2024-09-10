@@ -13,33 +13,30 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import type { StoredEBookChaptersInner } from './stored-ebook-chapters-inner';
 
 /**
  * 
  * @export
- * @interface StoredEBook
+ * @interface CreateAuthorDto
  */
-export interface StoredEBook {
-    /**
-     * 
-     * @type {Array<StoredEBookChaptersInner>}
-     * @memberof StoredEBook
-     */
-    'chapters': Array<StoredEBookChaptersInner>;
+export interface CreateAuthorDto {
     /**
      * 
      * @type {string}
-     * @memberof StoredEBook
+     * @memberof CreateAuthorDto
      */
-    'id': string;
+    'name': string;
     /**
      * 
      * @type {string}
-     * @memberof StoredEBook
+     * @memberof CreateAuthorDto
      */
-    'title': string;
+    'description': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateAuthorDto
+     */
+    'photo': string;
 }
 

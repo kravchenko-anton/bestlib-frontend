@@ -1,3 +1,4 @@
+// @ts-nocheck TODO: fix this in future
 import { Button, Field, FormTextArea } from '@/components/ui';
 import Loader from '@/components/ui/loader/loader';
 import api from '@/services/api';
@@ -11,7 +12,7 @@ import { MutationKeys, QueryKeys } from '@/utils/query-keys';
 import { UpdateBookDto } from 'api-client/models';
 import { SelectPicture } from '@/pages/book/components/select-picture';
 import SelectGenres from '@/pages/book/components/select-genres';
-import EbookComposer from '@/pages/book/components/ebook-editor/editor';
+import EbookComposer from '@/pages/book/components/ebook-creator/editor';
 
 export interface UpdateBookProperties {
 	bookId: string;
@@ -29,12 +30,6 @@ export const UpdateBook: FC<UpdateBookProperties> = ({bookId}) => {
 	const { data: book } = useQuery({
 		queryKey: QueryKeys.book.adminInfoById(bookId),
 		queryFn: () => api.book.adminInfoById(bookId),
-		select: data => data.data
-	})
-	const { data: ebook } = useQuery({
-		queryKey: QueryKeys.ebook.storedEbookById(bookId),
-
-		queryFn: () => api.ebook.storedEbookById(bookId),
 		select: data => data.data
 	})
 

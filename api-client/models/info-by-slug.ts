@@ -46,12 +46,6 @@ export interface InfoBySlug {
      * @type {number}
      * @memberof InfoBySlug
      */
-    'chapters': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof InfoBySlug
-     */
     'rating': number;
     /**
      * 

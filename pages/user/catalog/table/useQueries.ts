@@ -22,7 +22,7 @@ export const useQueries = ({ searchTerm = '', page = 0 }) => {
 			async onSuccess() {
 				successToast('User deleted')
 				await queryClient.invalidateQueries({
-					queryKey: QueryKeys.users.catalog.key
+					queryKey: QueryKeys.author.catalog.key
 				})
 			}
 		}

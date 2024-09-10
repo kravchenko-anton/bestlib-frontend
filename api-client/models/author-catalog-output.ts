@@ -15,31 +15,31 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { CreateBookDtoEbookInnerChaptersInner } from './create-book-dto-ebook-inner-chapters-inner';
+import type { AuthorCatalogOutputDataInner } from './author-catalog-output-data-inner';
 
 /**
  * 
  * @export
- * @interface CreateBookDtoEbookInner
+ * @interface AuthorCatalogOutput
  */
-export interface CreateBookDtoEbookInner {
+export interface AuthorCatalogOutput {
     /**
      * 
-     * @type {Array<CreateBookDtoEbookInnerChaptersInner>}
-     * @memberof CreateBookDtoEbookInner
+     * @type {Array<AuthorCatalogOutputDataInner>}
+     * @memberof AuthorCatalogOutput
      */
-    'chapters': Array<CreateBookDtoEbookInnerChaptersInner>;
+    'data': Array<AuthorCatalogOutputDataInner>;
     /**
      * 
-     * @type {string}
-     * @memberof CreateBookDtoEbookInner
+     * @type {boolean}
+     * @memberof AuthorCatalogOutput
      */
-    'id': string;
+    'canLoadMore': boolean;
     /**
      * 
-     * @type {string}
-     * @memberof CreateBookDtoEbookInner
+     * @type {number}
+     * @memberof AuthorCatalogOutput
      */
-    'title': string;
+    'totalPages': number;
 }
 

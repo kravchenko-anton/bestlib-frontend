@@ -15,9 +15,6 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { CreateBookDtoEbookInner } from './create-book-dto-ebook-inner';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { UserCatalogOutputDataInnerSelectedGenresInner } from './user-catalog-output-data-inner-selected-genres-inner';
 
 /**
@@ -46,12 +43,6 @@ export interface UpdateBookDto {
     'description'?: string;
     /**
      * 
-     * @type {Array<CreateBookDtoEbookInner>}
-     * @memberof UpdateBookDto
-     */
-    'ebook'?: Array<CreateBookDtoEbookInner>;
-    /**
-     * 
      * @type {boolean}
      * @memberof UpdateBookDto
      */
@@ -61,7 +52,7 @@ export interface UpdateBookDto {
      * @type {boolean}
      * @memberof UpdateBookDto
      */
-    'recommendable'?: boolean;
+    'IsRecommendable'?: boolean;
     /**
      * 
      * @type {number}

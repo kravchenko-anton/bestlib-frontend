@@ -17,26 +17,32 @@
 /**
  * 
  * @export
- * @interface CreateBookDtoEbookInnerChaptersInner
+ * @interface AuthorCatalogOutputDataInner
  */
-export interface CreateBookDtoEbookInnerChaptersInner {
+export interface AuthorCatalogOutputDataInner {
     /**
      * 
      * @type {string}
-     * @memberof CreateBookDtoEbookInnerChaptersInner
+     * @memberof AuthorCatalogOutputDataInner
      */
     'id': string;
     /**
      * 
      * @type {string}
-     * @memberof CreateBookDtoEbookInnerChaptersInner
+     * @memberof AuthorCatalogOutputDataInner
      */
     'name': string;
     /**
      * 
      * @type {string}
-     * @memberof CreateBookDtoEbookInnerChaptersInner
+     * @memberof AuthorCatalogOutputDataInner
      */
-    'text': string;
+    'description': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthorCatalogOutputDataInner
+     */
+    'photo': string;
 }
 

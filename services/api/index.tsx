@@ -7,7 +7,7 @@ import { GenreApi } from 'api-client/clients/genre-api';
 import { RecommendationApi } from 'api-client/clients/recommendation-api';
 import { StorageApi } from 'api-client/clients/storage-api';
 import { UserApi } from 'api-client/clients/user-api';
-import { ParserApi } from 'api-client/clients/parser-api';
+import { AuthorApi } from '@/api-client';
 
 export const webServerURL = process.env.SERVER_URL
 console.log('webServerURL', webServerURL)
@@ -18,7 +18,6 @@ const baseParameters = {
 
 
 const auth = new AuthApi(baseParameters, webServerURL, undefined)
-const parser = new ParserApi(baseParameters, webServerURL, undefined)
 
 const book = new BookApi(baseParameters, webServerURL, instance)
 
@@ -38,13 +37,13 @@ const recommendation = new RecommendationApi(
 const storage = new StorageApi(baseParameters, webServerURL, instance)
 
 const user = new UserApi(baseParameters, webServerURL, instance)
-
+const author = new AuthorApi(baseParameters, webServerURL, instance)
 export default {
 	auth,
 	book,
 	catalog,
+	author,
 	ebook,
-	parser,
 	genre,
 	recommendation,
 	storage,

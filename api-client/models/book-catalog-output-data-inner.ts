@@ -23,67 +23,61 @@ import type { UserLibraryOutputReadingBooksInnerAuthor } from './user-library-ou
 /**
  * 
  * @export
- * @interface CatalogOutputDataInner
+ * @interface BookCatalogOutputDataInner
  */
-export interface CatalogOutputDataInner {
+export interface BookCatalogOutputDataInner {
     /**
      * 
      * @type {string}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'description': string;
     /**
      * 
      * @type {number}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'readingTime': number;
     /**
      * 
      * @type {number}
-     * @memberof CatalogOutputDataInner
-     */
-    'chapters': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'rating': number;
     /**
      * 
      * @type {boolean}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'isPublic': boolean;
     /**
      * 
      * @type {Array<UserCatalogOutputDataInnerSelectedGenresInner>}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'genres': Array<UserCatalogOutputDataInnerSelectedGenresInner>;
     /**
      * 
      * @type {string}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'id': string;
     /**
      * 
      * @type {string}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'title': string;
     /**
      * 
      * @type {string}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'picture': string;
     /**
      * 
      * @type {UserLibraryOutputReadingBooksInnerAuthor}
-     * @memberof CatalogOutputDataInner
+     * @memberof BookCatalogOutputDataInner
      */
     'author': UserLibraryOutputReadingBooksInnerAuthor;
 }

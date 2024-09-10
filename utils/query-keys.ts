@@ -8,6 +8,16 @@ export const QueryKeys = {
 		list: ['reactions'],
 		byId: (id: string) => ['reaction-by-id', id]
 	},
+	author: {
+		catalog: {
+			key: ['authors-catalog'],
+			action: (searchTerm: string, page: number) => [
+				'authors-catalog',
+				searchTerm,
+				page
+			]
+		},
+	},
 	book: {
 		picksOfTheWeek: ['picks-of-the-week'],
 		key: ['book'],
@@ -19,8 +29,8 @@ export const QueryKeys = {
 			byId: (id: string) => ['book-overview', id]
 		},
 		updateInfo: {
-			key: ['book-update-info'],
-			byId: (id: string) => ['book-update-info', id]
+			key: ['update-info'],
+			byId: (id: string) => ['update-info', id]
 		},
 		catalog: {
 			key: ['books-catalog'],
@@ -93,6 +103,9 @@ export const MutationKeys = {
 		remove: ['remove-user'],
 		adjustGoal: ['adjust-goal'],
 		syncHistory: ['sync-history']
+	},
+	author: {
+		remove: ['remove-user'],
 	},
 	storage: {
 		uploadFile: ['upload-file']

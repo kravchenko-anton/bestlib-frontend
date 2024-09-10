@@ -61,7 +61,7 @@ export const columns = ({
 				src={getFileUrl(row.original.picture)}
 				width={50}
 				height={50}
-				className='mx-auto h-[60px] w-[60px] rounded-md'
+				className='mx-auto rounded-md'
 			/>
 		)
 	},
@@ -216,7 +216,7 @@ export const columns = ({
 		enableHiding: false,
 		header: () => <p className='text-md text-center'>Library</p>,
 		cell: ({ row }) => (
-			<div className=' max-w-[80px] items-center justify-center  gap-2'>
+			<div className=' items-center flex justify-center  gap-2'>
 				<Button size='sm' variant='muted' className='m-1 w-full'>
 					{`${row.original._count.savedBooks} Saved`}
 				</Button>
@@ -234,7 +234,7 @@ export const columns = ({
 		enableHiding: false,
 		header: () => <p className='text-center text-xl'>Genres</p>,
 		cell: ({ row }) => (
-			<div className=' max-w-[110px] items-center justify-center gap-1'>
+			<div className='items-center flex justify-center gap-1'>
 				{row.original.selectedGenres.map(genre => (
 					<GenreElement
 						key={genre.name}

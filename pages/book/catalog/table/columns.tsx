@@ -6,11 +6,11 @@ import type { ColumnDef } from '@tanstack/react-table';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { CatalogOutputDataInner } from 'api-client/models';
 import dayjs from 'dayjs';
 import { getFileUrl } from '@/utils/get-file-url';
+import { BookCatalogOutputDataInner } from '@/api-client';
 
-export const columns = (): ColumnDef<CatalogOutputDataInner, unknown>[] => [
+export const columns = (): ColumnDef<BookCatalogOutputDataInner, unknown>[] => [
 	{
 		id: 'picture',
 		enableHiding: false,
@@ -21,8 +21,8 @@ export const columns = (): ColumnDef<CatalogOutputDataInner, unknown>[] => [
 					alt={row.original.title}
 					className='z-40 mx-auto cursor-pointer rounded'
 					src={getFileUrl(row.original.picture)}
-					width={300}
-					height={250}
+					width={40}
+					height={30}
 				/>
 			</Link>
 		)
@@ -46,10 +46,10 @@ export const columns = (): ColumnDef<CatalogOutputDataInner, unknown>[] => [
 		cell: ({ row }) => (
 			<Drawer>
 				<DrawerTrigger asChild>
-					<p className='line-clamp-3'>{row.original.description}</p>
+					<p className='line-clamp-2 max-w-[400px] text-md'>{row.original.description}</p>
 				</DrawerTrigger>
 				<DrawerContent>
-					<span className='p-6 pb-10 text-justify text-xl'>
+					<span className='text-justify text-md'>
 						{row.original.description}
 					</span>
 				</DrawerContent>
@@ -76,7 +76,7 @@ export const columns = (): ColumnDef<CatalogOutputDataInner, unknown>[] => [
 	{
 		id: 'rating',
 		enableHiding: false,
-		header: () => <p className='text-md w-[200px] text-center'>Rating</p>,
+		header: () => <p className='text-md text-center'>Rating</p>,
 		cell: ({ row }) => (
 			<p className=' text-center text-xl font-light'>
 				<b className='text-warning font-bold'>{row.original.rating}</b>
@@ -86,7 +86,7 @@ export const columns = (): ColumnDef<CatalogOutputDataInner, unknown>[] => [
 	{
 		id: 'reading time',
 		enableHiding: false,
-		header: () => <p className='text-md w-[200px] text-center'>Reading time</p>,
+		header: () => <p className='text-md text-center'>Reading time</p>,
 		cell: ({ row }) => (
 			<p className=' text-center text-xl font-light'>
 				<b
@@ -95,7 +95,9 @@ export const columns = (): ColumnDef<CatalogOutputDataInner, unknown>[] => [
 						row.original.readingTime === 0 ? 'text-danger' : 'text-gray'
 					)}>
 					{
-						dayjs().startOf('day').add(row.original.readingTime, 'minute').format('HH:mm')
+						dayjs(row.original.readingTime).format(
+							"HH[h] mm[m]"
+						)
 					}
 				</b>
 			</p>
@@ -106,7 +108,7 @@ export const columns = (): ColumnDef<CatalogOutputDataInner, unknown>[] => [
 		enableHiding: false,
 		header: () => <p className='text-md text-center'>Genres</p>,
 		cell: ({ row }) => (
-			<div className=' max-w-[150px] items-center justify-center gap-1'>
+			<div className=' flex items-center justify-center gap-1'>
 				{row.original.genres.map(genre => (
 					<GenreElement
 						key={genre.id}

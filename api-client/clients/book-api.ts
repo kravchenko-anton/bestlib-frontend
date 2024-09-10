@@ -22,7 +22,7 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
-import type { CatalogOutput } from '../models';
+import type { BookCatalogOutput } from '../models';
 // @ts-ignore
 import type { CreateBookDto } from '../models';
 // @ts-ignore
@@ -306,7 +306,7 @@ export const BookApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async catalog(searchTerm: string, page: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CatalogOutput>> {
+        async catalog(searchTerm: string, page: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BookCatalogOutput>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.catalog(searchTerm, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BookApi.catalog']?.[localVarOperationServerIndex]?.url;
@@ -387,7 +387,7 @@ export const BookApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        catalog(searchTerm: string, page: number, options?: any): AxiosPromise<CatalogOutput> {
+        catalog(searchTerm: string, page: number, options?: any): AxiosPromise<BookCatalogOutput> {
             return localVarFp.catalog(searchTerm, page, options).then((request) => request(axios, basePath));
         },
         /**

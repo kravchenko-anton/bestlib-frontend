@@ -6,13 +6,13 @@ import { Button } from '@/components/ui';
 import { generateParameters } from '@/utils/generate-parameters';
 import { secureRoutes } from '@/utils/route';
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import type { CatalogOutput } from 'api-client/models';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
+import { BookCatalogOutput } from '@/api-client';
 
 interface BookCatalogTableProperties {
-	books: CatalogOutput | undefined
+	books: BookCatalogOutput | undefined
 	page: number
 	searchTerm: string
 }

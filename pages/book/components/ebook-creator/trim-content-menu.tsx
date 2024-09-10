@@ -27,16 +27,16 @@ export const TrimContentMenu: FC<TrimContentButtonProperties> = ({
 
 	return (
 		<Popover>
-			<PopoverTrigger>
+			<PopoverTrigger className='h-[28px]'>
 				<Scissors
 					width={33}
 					height={33}
-					className='bg-muted border-bordered h-full w-[35px] cursor-pointer rounded border-[1px] p-1.5'
+					className='bg-muted border-bordered cursor-pointer rounded border-[1px] p-1.5'
 				/>
 			</PopoverTrigger>
 
 			<PopoverContent className='p-4'>
-				<div className='space-y-2'>
+				<div className=''>
 					<h4 className='font-medium leading-none'>Trim text</h4>
 					<p className='text-muted-foreground pb-2 text-sm'>
 						Trim text from start to end line

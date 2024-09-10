@@ -49,12 +49,6 @@ export interface FullBook {
      * @type {number}
      * @memberof FullBook
      */
-    'chapters': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof FullBook
-     */
     'rating': number;
     /**
      * 

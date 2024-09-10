@@ -1,16 +1,15 @@
 import api from '@/services/api';
 import { secureRoutes } from '@/utils/route';
 import { successToast } from '@/utils/toast';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+
 
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { MutationKeys } from '@/utils/query-keys';
 import { CreateBookDto } from 'api-client/models';
-import { CreateBookSchema, CreateBookSchemaType } from '../../../../../backend/src/book/dto/create.book.schema';
-import { slugify } from '../../../../../backend/src/utils/helpers/slugify';
+import { slugify } from '@/utils/slugify';
 //TODO: пофиксить полностью создание книги чтобы работало без багов
 export const useCreateForm = () => {
 	const router = useRouter()
@@ -22,14 +21,13 @@ export const useCreateForm = () => {
 		setValue,
 		getValues,
 		formState: { errors }
-	} = useForm<CreateBookSchemaType>({
-		resolver: zodResolver(CreateBookSchema),
+	} = useForm<CreateBookDto>({
 		mode: 'onBlur'
 	})
 
 	useEffect(() => {
 		setValue('slug', slugify(watch('title')))
-	}, [setValue, watch])
+	}, [watch("title")])
 
 
 	const { mutateAsync: create, isPending: createLoading } = useMutation({
@@ -41,10 +39,15 @@ export const useCreateForm = () => {
 		}
 	})
 
-	const handleCreate = handleSubmit(async (data: CreateBookSchemaType) => {
-		await create(data)
+	const handleCreate = handleSubmit(async ({chapters, ...data}) => {
+		await create({
+			...data,
+			chapters: chapters.map((chapter, index) => ({
+				...chapter,
+				position: index + 1
+			}))
+		})
 	})
-	console.log(watch('genres'))
 	return {
 		watch,
 		control,

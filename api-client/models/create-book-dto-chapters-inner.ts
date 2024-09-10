@@ -17,32 +17,26 @@
 /**
  * 
  * @export
- * @interface UnfoldOutputImagesInner
+ * @interface CreateBookDtoChaptersInner
  */
-export interface UnfoldOutputImagesInner {
+export interface CreateBookDtoChaptersInner {
     /**
      * 
      * @type {string}
-     * @memberof UnfoldOutputImagesInner
+     * @memberof CreateBookDtoChaptersInner
      */
-    'id': string;
+    'title': string;
     /**
      * 
      * @type {string}
-     * @memberof UnfoldOutputImagesInner
+     * @memberof CreateBookDtoChaptersInner
      */
-    'href': string;
+    'content': string;
     /**
      * 
-     * @type {string}
-     * @memberof UnfoldOutputImagesInner
+     * @type {number}
+     * @memberof CreateBookDtoChaptersInner
      */
-    'mimeType': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UnfoldOutputImagesInner
-     */
-    'data': string;
+    'position': number;
 }
 

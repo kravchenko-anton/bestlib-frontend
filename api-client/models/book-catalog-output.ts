@@ -15,19 +15,31 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { UnfoldOutputChaptersInner } from './unfold-output-chapters-inner';
+import type { BookCatalogOutputDataInner } from './book-catalog-output-data-inner';
 
 /**
  * 
  * @export
- * @interface UnfoldOutput
+ * @interface BookCatalogOutput
  */
-export interface UnfoldOutput {
+export interface BookCatalogOutput {
     /**
      * 
-     * @type {Array<UnfoldOutputChaptersInner>}
-     * @memberof UnfoldOutput
+     * @type {Array<BookCatalogOutputDataInner>}
+     * @memberof BookCatalogOutput
      */
-    'chapters': Array<UnfoldOutputChaptersInner>;
+    'data': Array<BookCatalogOutputDataInner>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BookCatalogOutput
+     */
+    'canLoadMore': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof BookCatalogOutput
+     */
+    'totalPages': number;
 }
 

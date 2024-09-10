@@ -1,4 +1,5 @@
-import {withSentryConfig} from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 				reactStrictMode: true,
@@ -18,7 +19,8 @@ const nextConfig = {
 				},
 				env: {
 								CLIENT_ID: process.env.CLIENT_ID,
-								SERVER_URL: process.env.SERVER_URL
+								SERVER_URL: process.env.SERVER_URL,
+					STORAGE_URL: process.env.STORAGE_URL,
 				}
 };
 

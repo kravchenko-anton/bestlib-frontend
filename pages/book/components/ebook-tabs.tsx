@@ -8,20 +8,11 @@ import { type FC, useRef } from 'react';
 import { QueryKeys } from '@/utils/query-keys';
 import { HtmlInfoChart } from '@/pages/book/components/charts/html-info-chart';
 import { getTagColor } from '@/pages/book/components/getTagColor';
-import { reactions } from '../../../../backend/src/book/ebook/helpers/reactions';
 
 interface EbookInfoProperties {
 	bookId: string
 }
-const getAllImages = (ebookFile: string) => {
-	const parser = new DOMParser()
-	const htmlDocument = parser.parseFromString(ebookFile, 'text/html')
-	const images = htmlDocument.querySelectorAll('img')
-	return [...images].map(image => ({
-		src: image.src,
-		id: image.id
-	}))
-}
+
 const skipTags = new Set(['P', 'SPAN', 'BODY', 'HTML', 'HEAD', 'DIV'])
 
 const BookOverview: FC<EbookInfoProperties> = ({ bookId }) => {
@@ -63,27 +54,10 @@ const BookOverview: FC<EbookInfoProperties> = ({ bookId }) => {
 							Shows the images used in the document
 						</CardDescription>
 					</CardHeader>
-					<div className='border-bordered mb-4 flex gap-5 overflow-scroll p-2'>
-						{getAllImages(ebook.file).map(image => {
-							if (image.src.includes(ebook.picture)) return
-							if (reactions.some(reaction => reaction.gif === image.src)) return
-							if (['text-menu-share', 'text-menu-translate'].includes(image.id))
-								return
-							return (
-								<img
-									src={image.src}
-									key={image.src}
-									height={200}
-									className='pointer-events-none h-[300px] object-contain'
-								 />
-							)
-						})}
-					</div>
 				</Card>
 			</div>
 			<div className='mt-8 flex gap-2 overflow-auto pb-4'>
-				{ebook.chapters?.map(({ children }) =>
-					children.map(({ name, link }) => (
+				{ebook.chapters?.map(({ name,link }) =>
 						<Button
 							key={link}
 							size={'sm'}
@@ -93,7 +67,6 @@ const BookOverview: FC<EbookInfoProperties> = ({ bookId }) => {
 							}}>
 							{name}
 						</Button>
-					))
 				)}
 			</div>
 			<div className='border-bordered text-gray mb-4 w-full rounded border-[1px] p-2'>

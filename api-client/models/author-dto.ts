@@ -13,33 +13,36 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import type { CatalogOutputDataInner } from './catalog-output-data-inner';
 
 /**
  * 
  * @export
- * @interface CatalogOutput
+ * @interface AuthorDto
  */
-export interface CatalogOutput {
+export interface AuthorDto {
     /**
      * 
-     * @type {Array<CatalogOutputDataInner>}
-     * @memberof CatalogOutput
+     * @type {string}
+     * @memberof AuthorDto
      */
-    'data': Array<CatalogOutputDataInner>;
+    'id': string;
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogOutput
+     * @type {string}
+     * @memberof AuthorDto
      */
-    'canLoadMore': boolean;
+    'name': string;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogOutput
+     * @type {string}
+     * @memberof AuthorDto
      */
-    'totalPages': number;
+    'description': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthorDto
+     */
+    'photo': string;
 }
 

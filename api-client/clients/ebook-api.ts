@@ -24,7 +24,7 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { EbookOutput } from '../models';
 // @ts-ignore
-import type { StoredEBook } from '../models';
+import type { UnfoldOutput } from '../models';
 /**
  * EbookApi - axios parameter creator
  * @export
@@ -66,15 +66,12 @@ export const EbookApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @param {string} id 
+         * @param {File} [file] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        storedEbookById: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('storedEbookById', 'id', id)
-            const localVarPath = `/ebook/admin/stored-ebook/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        unfold: async (file?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/ebook/admin/unfold`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -82,15 +79,23 @@ export const EbookApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
 
 
+            if (file !== undefined) { 
+                localVarFormParams.append('file', file as any);
+            }
+    
+    
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = localVarFormParams;
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -121,14 +126,14 @@ export const EbookApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} id 
+         * @param {File} [file] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async storedEbookById(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<StoredEBook>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.storedEbookById(id, options);
+        async unfold(file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UnfoldOutput>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.unfold(file, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['EbookApi.storedEbookById']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['EbookApi.unfold']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -152,12 +157,12 @@ export const EbookApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @param {string} id 
+         * @param {File} [file] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        storedEbookById(id: string, options?: any): AxiosPromise<Array<StoredEBook>> {
-            return localVarFp.storedEbookById(id, options).then((request) => request(axios, basePath));
+        unfold(file?: File, options?: any): AxiosPromise<UnfoldOutput> {
+            return localVarFp.unfold(file, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -182,13 +187,13 @@ export class EbookApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} id 
+     * @param {File} [file] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EbookApi
      */
-    public storedEbookById(id: string, options?: RawAxiosRequestConfig) {
-        return EbookApiFp(this.configuration).storedEbookById(id, options).then((request) => request(this.axios, this.basePath));
+    public unfold(file?: File, options?: RawAxiosRequestConfig) {
+        return EbookApiFp(this.configuration).unfold(file, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

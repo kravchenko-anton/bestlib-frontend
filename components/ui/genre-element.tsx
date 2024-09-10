@@ -17,12 +17,12 @@ const GenreElement: FC<GenreElementProperties> = ({
 }) => (
 	<button
 		className={cn(
-			'mb-1 flex cursor-pointer items-center justify-center gap-2 rounded px-3 py-1.5 font-bold duration-200 ease-linear',
+			'flex cursor-pointer items-center justify-center gap-2 rounded px-2 py-2 font-bold duration-200 ease-linear',
 			settings.size.sm,
 			settings.colors.muted
 		)}
 		onClick={onClick}>
-		<span className='whitespace-nowrap text-lg text-gray-500'>{title}</span>
+		<span className='whitespace-nowrap text-sm text-gray-500'>{title}</span>
 
 		<Image
 			alt={title}

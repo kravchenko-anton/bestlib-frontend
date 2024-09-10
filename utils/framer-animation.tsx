@@ -1,9 +1,9 @@
-import { motion, type MotionProps } from 'framer-motion'
-import type { FC, PropsWithChildren } from 'react'
+import { motion, type MotionProps } from 'framer-motion';
+import type { FC, PropsWithChildren } from 'react';
 
 export const tapAnimation = {
 	whileHover: {
-		scale: 1.1
+		scale: 1.05
 	},
 	whileTap: {
 		scale: 0.9

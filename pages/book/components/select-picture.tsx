@@ -2,12 +2,24 @@ import { useUploadFile } from '@/hooks/useFileUpload';
 import { Controller } from 'react-hook-form';
 import { BaseFieldProperties } from '@/types/form-types';
 import { getFileUrl } from '@/utils/get-file-url';
+import { StorageFolderType } from '../../../../backend/src/storage/storage.types';
+import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import { cn } from '@/utils';
 
+interface SelectPictureProperties extends  DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
+	folder: StorageFolderType
+}
 export const SelectPicture = <T extends Record<string, any>>({
+	folder,
 	control,
-	name
-}: BaseFieldProperties<T>) => {
+	name,
+	className,
+	width = 220,
+	height = 300,
+	...rest
+}: BaseFieldProperties<T> & SelectPictureProperties) => {
 	const { upload, uploadLoading } = useUploadFile()
+	console.log(folder,'folder in select-picture')
 	return (
 		<Controller
 			control={control}
@@ -25,27 +37,27 @@ export const SelectPicture = <T extends Record<string, any>>({
 								disabled={uploadLoading}
 								onChange={async ({ target }) => {
 									const file = target.files?.[0]
-
 									if (!file) return
 									upload({
 										file,
-										folder: 'booksCovers'
+										folder
 									}).then(response => {
 										setPicture(response.data.name)
 									})
 								}}
 							/>
 							<img
-								width={220}
-								className='border-bordered  cursor-pointer rounded border-[1px]'
-								height={300}
-								src={getFileUrl(value)}
+								width={width}
+								className={cn('border-bordered cursor-pointer rounded border-[1px]', className)}
+								height={height}
 								alt='Cover'
+								src={getFileUrl(value)}
 								onClick={() => {
 									const element: HTMLElement | null =
 										document.querySelector('input[type=file]')
 									element?.click()
 								}}
+								{...rest}
 							/>
 						</div>
 					</div>

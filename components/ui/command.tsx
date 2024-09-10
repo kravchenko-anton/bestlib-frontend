@@ -16,7 +16,7 @@ const Command = forwardRef<
 	<CommandPrimitive
 		ref={reference}
 		className={cn(
-			'bg-foreground text-gray flex h-full w-full flex-col overflow-hidden rounded',
+			'bg-foreground border-none text-gray flex h-full w-full flex-col overflow-hidden rounded',
 			className
 		)}
 		{...properties}

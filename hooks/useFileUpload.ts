@@ -13,7 +13,10 @@ export const useUploadFile = () => {
 	const { mutateAsync: upload, isPending: uploadLoading } = useMutation({
 		mutationKey: MutationKeys.storage.uploadFile,
 		mutationFn: ({ folder, file }: UploadFileProperties) =>
-			api.storage.upload(folder, file),
+		{
+			console.log(folder,"useUploadFile")
+		 return 	api.storage.upload(folder, file)
+		},
 		onError: () =>
 			errorToast({
 				text1: 'Upload file',
