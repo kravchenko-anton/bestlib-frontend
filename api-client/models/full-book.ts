@@ -37,6 +37,18 @@ export interface FullBook {
      * @type {string}
      * @memberof FullBook
      */
+    'summary': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FullBook
+     */
+    'concept': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FullBook
+     */
     'description': string;
     /**
      * 
@@ -100,16 +112,16 @@ export interface FullBook {
     'updatedAt': string;
     /**
      * 
-     * @type {boolean}
-     * @memberof FullBook
-     */
-    'recommendable': boolean;
-    /**
-     * 
      * @type {string}
      * @memberof FullBook
      */
-    'ebook': string;
+    'authorId': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FullBook
+     */
+    'isRecommendable': boolean;
     /**
      * 
      * @type {FullBookCount}

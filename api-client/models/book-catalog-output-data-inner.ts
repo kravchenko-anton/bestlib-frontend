@@ -31,6 +31,18 @@ export interface BookCatalogOutputDataInner {
      * @type {string}
      * @memberof BookCatalogOutputDataInner
      */
+    'summary': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookCatalogOutputDataInner
+     */
+    'concept': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookCatalogOutputDataInner
+     */
     'description': string;
     /**
      * 

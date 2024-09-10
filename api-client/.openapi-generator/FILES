@@ -26,6 +26,7 @@ models/author-catalog-output.ts
 models/author-dto.ts
 models/book-catalog-output-data-inner.ts
 models/book-catalog-output.ts
+models/chapter.ts
 models/check503-response-info-value.ts
 models/check503-response.ts
 models/create-author-dto.ts
@@ -53,6 +54,7 @@ models/translate-text.ts
 models/unfold-output-chapters-inner.ts
 models/unfold-output.ts
 models/update-book-dto.ts
+models/update-chapter-dto.ts
 models/update-reaction.ts
 models/update-recommendation-dto.ts
 models/upload-output-dto.ts

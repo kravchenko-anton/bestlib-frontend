@@ -46,10 +46,10 @@ export const columns = (): ColumnDef<BookCatalogOutputDataInner, unknown>[] => [
 		cell: ({ row }) => (
 			<Drawer>
 				<DrawerTrigger asChild>
-					<p className='line-clamp-2 max-w-[400px] text-md'>{row.original.description}</p>
+					<p className='line-clamp-2 max-w-[450px] text-md'>{row.original.description}</p>
 				</DrawerTrigger>
 				<DrawerContent>
-					<span className='text-justify text-md'>
+					<span className='text-justify text-md pb-4 px-2'>
 						{row.original.description}
 					</span>
 				</DrawerContent>

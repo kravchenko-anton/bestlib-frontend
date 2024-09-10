@@ -9,51 +9,58 @@ import {
 } from '@/components/ui/dialog';
 import { Button, Field } from '@/components/ui';
 import { MutationKeys, QueryKeys } from '@/utils/query-keys';
-import type { CreateAuthorDto } from '@/api-client';
+
 import api from '@/services/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { SelectPicture } from '@/pages/book/components/select-picture';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CreateAuthorSchema } from '../../../backend/src/author/dto/author.schema';
+import { AuthorDto } from '@/api-client';
+import { AuthorSchema } from '../../../backend/src/author/dto/author.schema';
 import { successToast } from '@/utils/toast';
 
-export const AuthorCreate = () => {
+export const AuthorUpdate = ({picture,name,	id,description}:  AuthorDto) => {
 	const queryClient = useQueryClient()
-	const {control, handleSubmit, formState: {errors}} = useForm<CreateAuthorDto>({
-		resolver: zodResolver(CreateAuthorSchema)
+	const {control, handleSubmit, formState: {errors}} = useForm<AuthorDto>({
+		resolver: zodResolver(AuthorSchema),
+		defaultValues: {
+			picture,
+			name,
+			id,
+			description
+		}
 	})
-	const { mutateAsync: create } = useMutation({
+	const { mutateAsync: update } = useMutation({
 		mutationKey: MutationKeys.book.createBook,
-		mutationFn: (payload: CreateAuthorDto) => api.author.create(payload),
+		mutationFn: (payload: AuthorDto) => api.author.update(payload),
 		onSuccess: async data => {
 		await 	queryClient.invalidateQueries({
 				queryKey: QueryKeys.searchByTerm('')
 			})
-			successToast("Author created")
+			successToast("Author updated")
 		}
 	})
 
-	const onSubmit = async (data: CreateAuthorDto) => {
-		await create(data)
+	const onSubmit = async (data: AuthorDto) => {
+		await update(data)
 	}
 
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button size='sm' variant='muted' onClick={() => {}}>
-					Create
+				<Button size='sm' variant='warning' onClick={() => {}}>
+					Update
 				</Button>
 			</DialogTrigger>
 			<DialogContent  className="sm:max-w-[425px]">
 				<DialogHeader>
-					<DialogTitle>Create new author</DialogTitle>
+					<DialogTitle>Update new author</DialogTitle>
 					<DialogDescription>
-						Please fill the form to create a new author
+						Please fill the form to update a new author
 					</DialogDescription>
 				</DialogHeader>
 				<div className="grid gap-4 py-4">
-					<SelectPicture folder={'authorsPictures'} className='rounded-full' name='photo' control={control} width={80} height={80}/>
+					<SelectPicture folder={'authorsPictures'} className='rounded-full' name='picture' control={control} width={80} height={80}/>
 					<div className="w-full items-center gap-4">
 						<Field
 							control={control}
@@ -75,7 +82,7 @@ export const AuthorCreate = () => {
 					<Button size='md'
 									onClick={handleSubmit(onSubmit)}
 									variant={Object.keys(errors).length > 0 ? 'danger' : 'foreground'}
-									type="submit">Create</Button>
+									type="submit">Update</Button>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>

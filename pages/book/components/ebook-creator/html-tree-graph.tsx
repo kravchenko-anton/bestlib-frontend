@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { cn } from '@/utils';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Pie, PieChart } from 'recharts';
+import { skipTags } from '@/pages/book/components/ebook-reader/ebook-reader';
 
 interface HtmlTreeGraphProperties {
 	htmlTree: string
@@ -19,7 +20,7 @@ export const HtmlTreeGraph = ({ htmlTree,isHidden }: HtmlTreeGraphProperties) =>
 		]
 			.map(tag => tag.nodeName)
 			.reduce((accumulator, tag) => {
-				if (['P', 'SPAN', 'BODY', 'HTML', 'HEAD', 'DIV'].includes(tag))
+				if (skipTags.has(tag))
 					return accumulator
 				// @ts-ignore
 				accumulator[tag] = accumulator[tag] ? accumulator[tag] + 1 : 1

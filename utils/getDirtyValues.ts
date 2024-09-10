@@ -14,3 +14,11 @@ export function dirtyValues(
 		])
 	)
 }
+
+
+export function getDirtyFields<T>(defaultValue: T, value: T): Partial<T> {
+	return Object.fromEntries(
+	// @ts-ignore
+		Object.entries(value).filter(([key, value_]) => value_ !== defaultValue[key as keyof T])
+	) as Partial<T>;
+}

@@ -25,12 +25,6 @@ export interface UnfoldOutputChaptersInner {
      * @type {string}
      * @memberof UnfoldOutputChaptersInner
      */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UnfoldOutputChaptersInner
-     */
     'title': string;
     /**
      * 
@@ -38,5 +32,11 @@ export interface UnfoldOutputChaptersInner {
      * @memberof UnfoldOutputChaptersInner
      */
     'content': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnfoldOutputChaptersInner
+     */
+    'id': string;
 }
 

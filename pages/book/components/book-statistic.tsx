@@ -19,7 +19,8 @@ const BookStatistic: FC<InfoBlockProperties> = ({
 		<p className='border-bordered text-md mb-1 flex justify-between border-b-2  pb-1'>
 			reading Time:
 			<b className='font-mono text-white'> {
-				dayjs().startOf('day').add(readingTime, 'minute').format('HH:mm')
+				dayjs(readingTime)
+					.format('HH[h] mm[m]')
 			}</b>
 		</p>
 		<p className='text-md mb-1 flex justify-between'>

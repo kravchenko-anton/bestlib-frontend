@@ -22,15 +22,52 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
+import type { Chapter } from '../models';
+// @ts-ignore
 import type { EbookOutput } from '../models';
 // @ts-ignore
 import type { UnfoldOutput } from '../models';
+// @ts-ignore
+import type { UpdateChapterDto } from '../models';
 /**
  * EbookApi - axios parameter creator
  * @export
  */
 export const EbookApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminEbookById: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('adminEbookById', 'id', id)
+            const localVarPath = `/ebook/admin-ebook/by-id/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @param {string} id 
@@ -102,6 +139,45 @@ export const EbookApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateChapterDto} updateChapterDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateChapter: async (id: string, updateChapterDto: UpdateChapterDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateChapter', 'id', id)
+            // verify required parameter 'updateChapterDto' is not null or undefined
+            assertParamExists('updateChapter', 'updateChapterDto', updateChapterDto)
+            const localVarPath = `/ebook/update-chapter/by-id/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateChapterDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -112,6 +188,18 @@ export const EbookApiAxiosParamCreator = function (configuration?: Configuration
 export const EbookApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = EbookApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminEbookById(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Chapter>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.adminEbookById(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['EbookApi.adminEbookById']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          * 
          * @param {string} id 
@@ -136,6 +224,19 @@ export const EbookApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['EbookApi.unfold']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateChapterDto} updateChapterDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateChapter(id: string, updateChapterDto: UpdateChapterDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateChapter(id, updateChapterDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['EbookApi.updateChapter']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -146,6 +247,15 @@ export const EbookApiFp = function(configuration?: Configuration) {
 export const EbookApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = EbookApiFp(configuration)
     return {
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminEbookById(id: string, options?: any): AxiosPromise<Array<Chapter>> {
+            return localVarFp.adminEbookById(id, options).then((request) => request(axios, basePath));
+        },
         /**
          * 
          * @param {string} id 
@@ -164,6 +274,16 @@ export const EbookApiFactory = function (configuration?: Configuration, basePath
         unfold(file?: File, options?: any): AxiosPromise<UnfoldOutput> {
             return localVarFp.unfold(file, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateChapterDto} updateChapterDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateChapter(id: string, updateChapterDto: UpdateChapterDto, options?: any): AxiosPromise<void> {
+            return localVarFp.updateChapter(id, updateChapterDto, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -174,6 +294,17 @@ export const EbookApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class EbookApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EbookApi
+     */
+    public adminEbookById(id: string, options?: RawAxiosRequestConfig) {
+        return EbookApiFp(this.configuration).adminEbookById(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @param {string} id 
@@ -194,6 +325,18 @@ export class EbookApi extends BaseAPI {
      */
     public unfold(file?: File, options?: RawAxiosRequestConfig) {
         return EbookApiFp(this.configuration).unfold(file, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {UpdateChapterDto} updateChapterDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EbookApi
+     */
+    public updateChapter(id: string, updateChapterDto: UpdateChapterDto, options?: RawAxiosRequestConfig) {
+        return EbookApiFp(this.configuration).updateChapter(id, updateChapterDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

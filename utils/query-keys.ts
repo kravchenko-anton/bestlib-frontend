@@ -50,7 +50,7 @@ export const QueryKeys = {
 	ebook: {
 		key: ['ebook'],
 		byId: (id: string) => ['ebook', id],
-		storedEbookById: (id: string) => ['stored-ebook', id]
+		adminById: (id: string) => ['admin-ebook', id]
 	},
 
 	bookTemplate: {
@@ -79,6 +79,9 @@ export const QueryKeys = {
 }
 
 export const MutationKeys = {
+	chapters: {
+		update: ['update-chapter'],
+	},
 	book: {
 		update: ['update-book'],
 		startReadingById: (id: string) => ['start-reading', id],

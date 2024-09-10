@@ -25,7 +25,7 @@ export interface EbookOutputChaptersInner {
      * @type {string}
      * @memberof EbookOutputChaptersInner
      */
-    'name': string;
+    'title': string;
     /**
      * 
      * @type {string}

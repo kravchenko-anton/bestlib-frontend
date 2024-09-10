@@ -34,6 +34,18 @@ export interface InfoBySlug {
      * @type {string}
      * @memberof InfoBySlug
      */
+    'summary': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InfoBySlug
+     */
+    'concept': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InfoBySlug
+     */
     'description': string;
     /**
      * 

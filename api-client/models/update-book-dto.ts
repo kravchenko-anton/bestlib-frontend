@@ -34,13 +34,25 @@ export interface UpdateBookDto {
      * @type {string}
      * @memberof UpdateBookDto
      */
-    'authorId': string;
+    'authorId'?: string;
     /**
      * 
      * @type {string}
      * @memberof UpdateBookDto
      */
     'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBookDto
+     */
+    'summary'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBookDto
+     */
+    'concept'?: string;
     /**
      * 
      * @type {boolean}
@@ -52,7 +64,7 @@ export interface UpdateBookDto {
      * @type {boolean}
      * @memberof UpdateBookDto
      */
-    'IsRecommendable'?: boolean;
+    'isRecommendable'?: boolean;
     /**
      * 
      * @type {number}

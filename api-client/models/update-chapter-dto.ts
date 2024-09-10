@@ -17,32 +17,26 @@
 /**
  * 
  * @export
- * @interface AuthorDto
+ * @interface UpdateChapterDto
  */
-export interface AuthorDto {
+export interface UpdateChapterDto {
     /**
      * 
      * @type {string}
-     * @memberof AuthorDto
+     * @memberof UpdateChapterDto
      */
-    'id': string;
+    'title'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AuthorDto
+     * @memberof UpdateChapterDto
      */
-    'name': string;
+    'content'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof AuthorDto
+     * @type {number}
+     * @memberof UpdateChapterDto
      */
-    'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorDto
-     */
-    'picture': string;
+    'position'?: number;
 }
 

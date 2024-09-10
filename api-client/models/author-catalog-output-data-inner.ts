@@ -43,6 +43,6 @@ export interface AuthorCatalogOutputDataInner {
      * @type {string}
      * @memberof AuthorCatalogOutputDataInner
      */
-    'photo': string;
+    'picture': string;
 }
 

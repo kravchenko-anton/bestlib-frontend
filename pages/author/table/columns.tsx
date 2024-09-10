@@ -4,14 +4,9 @@ import type { ColumnDef } from '@tanstack/react-table';
 import Image from 'next/image';
 import { getFileUrl } from '@/utils/get-file-url';
 import { AuthorCatalogOutputDataInner } from '@/api-client';
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import { MoreHorizontal } from '@/icons/more-horizontal';
-import { acceptToast, infoToast } from '@/utils/toast';
+import { infoToast } from '@/utils/toast';
+import { Button } from '@/components/ui';
+import { AuthorUpdate } from '@/pages/author/author-update';
 
 export interface AuthorCatalogProperties{
 	remove: (id: string) => void
@@ -25,8 +20,8 @@ export const columns = ({remove,removeLoading}:AuthorCatalogProperties): ColumnD
 		cell: ({ row }) => (
 				<Image
 					alt={row.original.name}
-					className='z-40 mx-auto cursor-pointer rounded'
-					src={getFileUrl(row.original.photo)}
+					className='z-40 rounded-full mx-auto cursor-pointer'
+					src={getFileUrl(row.original.picture)}
 					width={50}
 					height={50}
 				/>
@@ -59,31 +54,21 @@ export const columns = ({remove,removeLoading}:AuthorCatalogProperties): ColumnD
 	{
 		id: 'Actions',
 		cell: ({ row }) => (
-			<DropdownMenu>
-				<DropdownMenuTrigger className='focus-visible:outline-0'>
-					<MoreHorizontal
-						height={40}
-						width={40}
-						className='bg-muted border-bordered rounded border-[1px] p-2'
+				<div className='flex items-center gap-2'>
+
+					<AuthorUpdate name={row.original.name}
+												picture={row.original.picture}
+					              id={row.original.id}
+					              description={row.original.description}
 					/>
-				</DropdownMenuTrigger>
-				<DropdownMenuContent align='end'>
-					<DropdownMenuItem
-						onClick={() =>
-							acceptToast('Are you sure you want to delete this book?', {
-								action: {
-									label: 'Delete',
-									onClick: () => {
-										if (removeLoading) return infoToast('Please wait')
-										remove(row.original.id)
-									}
-								}
-							})
-						}>
+					<Button size='sm' variant='danger' onClick={() => {
+						if (removeLoading) return infoToast('Please wait')
+						remove(row.original.id)
+					}}>
 						Delete
-					</DropdownMenuItem>
-				</DropdownMenuContent>
-			</DropdownMenu>
+					</Button>
+				</div>
+
 		)
 	}
 ]
