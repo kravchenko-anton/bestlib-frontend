@@ -1,9 +1,10 @@
 import api from '@/services/api';
 import { errorToast, successToast } from '@/utils/toast';
+import type { UnfoldChapterType } from '@/validation/ebook/chapter.schema'
 import { useMutation } from '@tanstack/react-query';
 import { MutationKeys } from '@/utils/query-keys';
 import { chapterNames } from '@/pages/book/components/ebook-creator/chapter-names';
-import { UnfoldChapterType } from '../../../../../backend/src/ebook/dto/chapter.schema';
+import type { Dispatch, SetStateAction } from 'react'
 
 export const useBookCompose = ({
 	chapters,
@@ -11,7 +12,7 @@ export const useBookCompose = ({
 }: {
 
 	chapters: UnfoldChapterType[]
-	setEBooks: React.Dispatch<React.SetStateAction<UnfoldChapterType[]>>
+	setEBooks: Dispatch<SetStateAction<UnfoldChapterType[]>>
 }) => {
 	const { mutateAsync: unfold, isPending: unfoldLoading } = useMutation({
 		mutationKey: MutationKeys.bookTemplate.unfold,

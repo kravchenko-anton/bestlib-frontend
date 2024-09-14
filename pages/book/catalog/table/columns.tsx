@@ -1,14 +1,13 @@
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
-import GenreElement from '@/components/ui/genre-element';
-import { cn } from '@/utils';
-import { secureRoutes } from '@/utils/route';
-import type { ColumnDef } from '@tanstack/react-table';
+import { BookCatalogOutputDataInner } from '@/api-client'
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
+import GenreElement from '@/components/ui/genre-element'
+import { cn } from '@/utils'
+import { getFileUrl } from '@/utils/get-file-url'
+import { secureRoutes } from '@/utils/route'
+import type { ColumnDef } from '@tanstack/react-table'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import dayjs from 'dayjs';
-import { getFileUrl } from '@/utils/get-file-url';
-import { BookCatalogOutputDataInner } from '@/api-client';
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const columns = (): ColumnDef<BookCatalogOutputDataInner, unknown>[] => [
 	{
@@ -83,26 +82,7 @@ export const columns = (): ColumnDef<BookCatalogOutputDataInner, unknown>[] => [
 			</p>
 		)
 	},
-	{
-		id: 'reading time',
-		enableHiding: false,
-		header: () => <p className='text-md text-center'>Reading time</p>,
-		cell: ({ row }) => (
-			<p className=' text-center text-xl font-light'>
-				<b
-					className={cn(
-						'text-center font-bold',
-						row.original.readingTime === 0 ? 'text-danger' : 'text-gray'
-					)}>
-					{
-						dayjs(row.original.readingTime).format(
-							"HH[h] mm[m]"
-						)
-					}
-				</b>
-			</p>
-		)
-	},
+
 	{
 		id: 'genres',
 		enableHiding: false,

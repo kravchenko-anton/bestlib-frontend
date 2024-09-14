@@ -1,15 +1,15 @@
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import api from '@/services/api';
-import { cn } from '@/utils';
-import { useQuery } from '@tanstack/react-query';
-import { Color } from '@/utils/colors';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Check } from '@/icons/check'
+import api from '@/services/api'
+import { BaseFieldProperties } from '@/types/form-types'
+import { cn } from '@/utils'
+import { Color } from '@/utils/colors'
+import { QueryKeys } from '@/utils/query-keys'
+import { useQuery } from '@tanstack/react-query'
+import { ShortGenre } from 'api-client/models'
 
-import { Controller } from 'react-hook-form';
-import { ShortGenre } from 'api-client/models';
-import { BaseFieldProperties } from '@/types/form-types';
-import { QueryKeys } from '@/utils/query-keys';
-import { Check } from '@/icons/check';
+import { Controller } from 'react-hook-form'
 
 const SelectGenres = <T extends Record<string, any>>({
 	control,

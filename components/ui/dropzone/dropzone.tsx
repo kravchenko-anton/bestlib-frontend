@@ -1,10 +1,10 @@
 'use client';
-import { cn } from '@/utils';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { settings } from './settings';
-import type { DropzoneProperties } from './types';
-import { Color } from '@/utils/colors';
-import { File } from '@/icons/file';
+import { File } from '@/icons/file'
+import { cn } from '@/utils'
+import { Color } from '@/utils/colors'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { settings } from './settings'
+import type { DropzoneProperties } from './types'
 
 const Dropzone = ({
 	onDropFile = () => null,

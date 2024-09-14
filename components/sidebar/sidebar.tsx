@@ -4,22 +4,22 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import { useAuthStore } from '@/pages/login/auth/auth-store';
-import { cn } from '@/utils';
-import { tapAnimation } from '@/utils/framer-animation';
-import { motion } from 'framer-motion';
-import { Color } from '@/utils/colors';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import type { FC } from 'react';
-import { User } from '@/icons/user';
-import { Book } from '@/icons/book';
-import { Logout } from '@/icons/logout';
-import { MoreHorizontal } from '@/icons/more-horizontal';
-import { secureRoutes } from '@/utils/route';
-import { Star } from '@/icons/star';
-import { UserPen } from '@/icons/user-pen';
+} from '@/components/ui/dropdown-menu'
+import { Book } from '@/icons/book'
+import { Logout } from '@/icons/logout'
+import { MoreHorizontal } from '@/icons/more-horizontal'
+import { Star } from '@/icons/star'
+import { User } from '@/icons/user'
+import { UserPen } from '@/icons/user-pen'
+import { useAuthStore } from '@/pages/login/auth/auth-store'
+import { cn } from '@/utils'
+import { Color } from '@/utils/colors'
+import { tapAnimation } from '@/utils/framer-animation'
+import { secureRoutes } from '@/utils/route'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import type { FC } from 'react'
 
 export const iconsList = [
 	{ icon: User, link: secureRoutes.userCatalogRoute, name: 'Users' },

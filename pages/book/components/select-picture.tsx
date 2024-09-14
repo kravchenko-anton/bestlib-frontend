@@ -1,10 +1,10 @@
-import { useUploadFile } from '@/hooks/useFileUpload';
-import { Controller } from 'react-hook-form';
-import { BaseFieldProperties } from '@/types/form-types';
-import { getFileUrl } from '@/utils/get-file-url';
-import { StorageFolderType } from '../../../../backend/src/storage/storage.types';
-import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
-import { cn } from '@/utils';
+import { useUploadFile } from '@/hooks/useFileUpload'
+import { BaseFieldProperties } from '@/types/form-types'
+import { cn } from '@/utils'
+import { getFileUrl } from '@/utils/get-file-url'
+import type { StorageFolderType } from '@/utils/storage.types'
+import { DetailedHTMLProps, ImgHTMLAttributes } from 'react'
+import { Controller } from 'react-hook-form'
 
 interface SelectPictureProperties extends  DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
 	folder: StorageFolderType

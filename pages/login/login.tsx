@@ -1,13 +1,13 @@
-import { Button, Field } from '@/components/ui';
-import { useAuthStore } from '@/pages/login/auth/auth-store';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { type CredentialResponse, GoogleLogin } from '@react-oauth/google';
+import { Button, Field } from '@/components/ui'
+import { Mail } from '@/icons/mail'
+import { Password } from '@/icons/password'
+import { useAuthStore } from '@/pages/login/auth/auth-store'
+import { AuthDtoType } from '@/pages/login/auth/auth.types'
+import { AuthSchema } from '@/validation/auth.schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { type CredentialResponse, GoogleLogin } from '@react-oauth/google'
 
-import { useForm } from 'react-hook-form';
-import { AuthDtoType } from '@/pages/login/auth/auth.types';
-import { Mail } from '@/icons/mail';
-import { Password } from '@/icons/password';
-import { AuthSchema } from '../../../backend/src/auth/dto/auth.schema';
+import { useForm } from 'react-hook-form'
 
 export const Login = () => {
 	const { mailLogin, googleLogin } = useAuthStore(state => ({

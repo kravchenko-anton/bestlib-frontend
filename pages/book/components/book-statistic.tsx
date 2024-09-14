@@ -1,28 +1,19 @@
-import type { FC } from 'react';
-import { FullBookCount } from 'api-client/models';
-import dayjs from 'dayjs';
+import { FullBookCount } from 'api-client/models'
+import dayjs from 'dayjs'
+import type { FC } from 'react'
 
 interface InfoBlockProperties {
 	_count: FullBookCount
 	createdAt: string
 	updatedAt: string
-	readingTime: number
 }
 
 const BookStatistic: FC<InfoBlockProperties> = ({
 	_count,
 	createdAt,
-	readingTime,
 	updatedAt
 }) => (
 	<div className='border-bordered my-2 rounded border-[1px] p-2'>
-		<p className='border-bordered text-md mb-1 flex justify-between border-b-2  pb-1'>
-			reading Time:
-			<b className='font-mono text-white'> {
-				dayjs(readingTime)
-					.format('HH[h] mm[m]')
-			}</b>
-		</p>
 		<p className='text-md mb-1 flex justify-between'>
 			finished By:
 			<b className='text-white'> {_count.finishedBy}</b>

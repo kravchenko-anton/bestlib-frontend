@@ -1,20 +1,20 @@
-import { Button } from '@/components/ui';
-import GenreElement from '@/components/ui/genre-element';
-import Loader from '@/components/ui/loader/loader';
-import api from '@/services/api';
-import { cn } from '@/utils';
-import { secureRoutes } from '@/utils/route';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { QueryKeys } from '@/utils/query-keys';
-import { getFileUrl } from '@/utils/get-file-url';
-import BookStatistic from '@/pages/book/components/book-statistic';
-import { RemoveButton } from '@/pages/book/components/remove-button';
-import { ActivityChart } from '@/pages/book/components/charts/activity-chart';
-import EbookReader, { skipTags } from '@/pages/book/components/ebook-reader/ebook-reader';
-import { HtmlInfoChart } from '@/pages/book/components/charts/html-info-chart';
-import { getTagColor } from '@/pages/book/components/getTagColor';
+import { Button } from '@/components/ui'
+import GenreElement from '@/components/ui/genre-element'
+import Loader from '@/components/ui/loader/loader'
+import BookStatistic from '@/pages/book/components/book-statistic'
+import { ActivityChart } from '@/pages/book/components/charts/activity-chart'
+import { HtmlInfoChart } from '@/pages/book/components/charts/html-info-chart'
+import EbookReader, { skipTags } from '@/pages/book/components/ebook-reader/ebook-reader'
+import { getTagColor } from '@/pages/book/components/getTagColor'
+import { RemoveButton } from '@/pages/book/components/remove-button'
+import api from '@/services/api'
+import { cn } from '@/utils'
+import { getFileUrl } from '@/utils/get-file-url'
+import { QueryKeys } from '@/utils/query-keys'
+import { secureRoutes } from '@/utils/route'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export interface OverviewBookProperties {
 	id: string;
@@ -58,7 +58,6 @@ export const OverviewBook = ({id}:OverviewBookProperties) => {
 							className='bg-muted mb-2 rounded'
 						/>
 						<BookStatistic
-							readingTime={book.readingTime}
 							createdAt={book.createdAt}
 							_count={book._count}
 							updatedAt={book.updatedAt}

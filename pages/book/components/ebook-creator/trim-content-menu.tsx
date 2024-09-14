@@ -1,11 +1,11 @@
-import { Button, Field } from '@/components/ui';
+import { Button, Field } from '@/components/ui'
 
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { FC } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Scissors } from '@/icons/scissors';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Scissors } from '@/icons/scissors'
+import { zodResolver } from '@hookform/resolvers/zod'
+import type { FC } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 interface TrimContentButtonProperties {
 	onSubmit: (data: parseValidationType) => void

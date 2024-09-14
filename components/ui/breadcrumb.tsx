@@ -1,9 +1,8 @@
-import { Slot } from '@radix-ui/react-slot';
-import * as React from 'react';
-
-import { cn } from '@/utils';
-import { ChevronRight } from '@/icons/chevron-right';
-import { MoreHorizontal } from '@/icons/more-horizontal';
+import { ChevronRight } from '@/icons/chevron-right'
+import { MoreHorizontal } from '@/icons/more-horizontal'
+import { cn } from '@/utils'
+import { Slot } from '@radix-ui/react-slot'
+import * as React from 'react'
 
 const Breadcrumb = React.forwardRef<
 	HTMLElement,

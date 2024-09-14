@@ -1,8 +1,8 @@
 export const secureRoutes = {
 	bookCatalogRoute: '/admin/book' + '/catalog',
 	bookCreateRoute: '/admin/book' + '/create',
-	bookUpdateRoute: (slug: string) => '/admin/book/' + slug + '/update',
-	bookOverviewRoute: (slug: string) => '/admin/book/' + slug,
+	bookUpdateRoute: (id: string) => '/admin/book/' + id + '/update',
+	bookOverviewRoute: (id: string) => '/admin/book/' + id,
 	userCatalogRoute: '/admin/user' + '/catalog',
 	authorCatalogRoute: '/admin/author' + '/catalog',
 }

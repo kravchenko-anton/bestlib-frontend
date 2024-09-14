@@ -1,8 +1,8 @@
-import api from '@/services/api';
-import { errorToast } from '@/utils/toast';
-import { useMutation } from '@tanstack/react-query';
-import { MutationKeys } from '@/utils/query-keys';
-import { StorageFolderType } from '../../backend/src/storage/storage.types';
+import api from '@/services/api'
+import { MutationKeys } from '@/utils/query-keys'
+import type { StorageFolderType } from '@/utils/storage.types'
+import { errorToast } from '@/utils/toast'
+import { useMutation } from '@tanstack/react-query'
 
 interface UploadFileProperties {
 	folder: StorageFolderType

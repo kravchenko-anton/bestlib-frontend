@@ -1,12 +1,12 @@
 'use client';
 
-import { cn } from '@/utils';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import type { ComponentPropsWithoutRef, ElementRef, HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
-import { ChevronRight } from '@/icons/chevron-right';
-import { Check } from '@/icons/check';
-import { Dot } from '@/icons/dot';
+import { Check } from '@/icons/check'
+import { ChevronRight } from '@/icons/chevron-right'
+import { Dot } from '@/icons/dot'
+import { cn } from '@/utils'
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
+import type { ComponentPropsWithoutRef, ElementRef, HTMLAttributes } from 'react'
+import { forwardRef } from 'react'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 

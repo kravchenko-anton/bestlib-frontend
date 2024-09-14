@@ -1,30 +1,25 @@
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 import {
 	ChartContainer,
 	ChartLegend,
 	ChartLegendContent,
 	ChartTooltip,
 	ChartTooltipContent
-} from '@/components/ui/chart';
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import GenreElement from '@/components/ui/genre-element';
-import { acceptToast, infoToast } from '@/utils/toast';
-import type { ColumnDef } from '@tanstack/react-table';
-import type { UserCatalogOutputDataInner } from 'api-client/models';
-import * as React from 'react';
-import { Area, AreaChart, XAxis } from 'recharts';
-import { MoreHorizontal } from '@/icons/more-horizontal';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import { Color } from '@/utils/colors';
-import { NothingFound } from '@/public/illustrations/nothing-found';
-import { getFileUrl } from '@/utils/get-file-url';
+} from '@/components/ui/chart'
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import GenreElement from '@/components/ui/genre-element'
+import { MoreHorizontal } from '@/icons/more-horizontal'
+import { NothingFound } from '@/public/illustrations/nothing-found'
+import { Color } from '@/utils/colors'
+import { getFileUrl } from '@/utils/get-file-url'
+import { acceptToast, infoToast } from '@/utils/toast'
+import type { ColumnDef } from '@tanstack/react-table'
+import type { UserCatalogOutputDataInner } from 'api-client/models'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import * as React from 'react'
+import { Area, AreaChart, XAxis } from 'recharts'
 
 dayjs.extend(relativeTime)
 export const columns = ({

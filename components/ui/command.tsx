@@ -1,13 +1,13 @@
 'use client';
 
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { cn } from '@/utils';
+import { Dialog, DialogContent } from '@/components/ui/dialog'
+import { Search } from '@/icons/search'
+import { cn } from '@/utils'
 
-import type { DialogProps } from '@radix-ui/react-dialog';
-import { Command as CommandPrimitive } from 'cmdk';
-import type { ComponentPropsWithoutRef, ElementRef, HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
-import { Search } from '@/icons/search';
+import type { DialogProps } from '@radix-ui/react-dialog'
+import { Command as CommandPrimitive } from 'cmdk'
+import type { ComponentPropsWithoutRef, ElementRef, HTMLAttributes } from 'react'
+import { forwardRef } from 'react'
 
 const Command = forwardRef<
 	ElementRef<typeof CommandPrimitive>,

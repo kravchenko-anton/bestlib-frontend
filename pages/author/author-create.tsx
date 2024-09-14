@@ -11,11 +11,11 @@ import { Button, Field } from '@/components/ui';
 import { MutationKeys, QueryKeys } from '@/utils/query-keys';
 import type { CreateAuthorDto } from '@/api-client';
 import api from '@/services/api';
+import { CreateAuthorSchema } from '@/validation/author.schema'
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { SelectPicture } from '@/pages/book/components/select-picture';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CreateAuthorSchema } from '../../../backend/src/author/dto/author.schema';
 import { successToast } from '@/utils/toast';
 
 export const AuthorCreate = () => {

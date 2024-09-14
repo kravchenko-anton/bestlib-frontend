@@ -1,18 +1,18 @@
-import { DropZone, Input, TextArea } from '@/components/ui';
-import { TapComponent } from '@/utils/framer-animation';
-import { successToast } from '@/utils/toast';
+import { DropZone, Input, TextArea } from '@/components/ui'
+import { CaseSensitive } from '@/icons/case-sensitive'
+import { Close } from '@/icons/close'
+import { Copy } from '@/icons/copy'
+import { HardDriveDownload } from '@/icons/hard-drive-download'
+import { HardDriveUpload } from '@/icons/hard-drive-upload'
+import { HtmlTreeGraph } from '@/pages/book/components/ebook-creator/html-tree-graph'
+import { TrimContentMenu } from '@/pages/book/components/ebook-creator/trim-content-menu'
+import { useBookCompose } from '@/pages/book/components/ebook-creator/useBookCompose'
+import { BaseFieldProperties } from '@/types/form-types'
+import { TapComponent } from '@/utils/framer-animation'
+import { successToast } from '@/utils/toast'
 
-import * as React from 'react';
-import { Controller } from 'react-hook-form';
-import { BaseFieldProperties } from '@/types/form-types';
-import { HardDriveDownload } from '@/icons/hard-drive-download';
-import { Copy } from '@/icons/copy';
-import { HardDriveUpload } from '@/icons/hard-drive-upload';
-import { Close } from '@/icons/close';
-import { useBookCompose } from '@/pages/book/components/ebook-creator/useBookCompose';
-import { CaseSensitive } from '@/icons/case-sensitive';
-import { TrimContentMenu } from '@/pages/book/components/ebook-creator/trim-content-menu';
-import { HtmlTreeGraph } from '@/pages/book/components/ebook-creator/html-tree-graph';
+import * as React from 'react'
+import { Controller } from 'react-hook-form'
 
 const EbookComposer = <T extends Record<string, any>>({
 	control,

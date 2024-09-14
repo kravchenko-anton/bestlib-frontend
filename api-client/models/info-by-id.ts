@@ -18,73 +18,82 @@
 import type { UserCatalogOutputDataInnerSelectedGenresInner } from './user-catalog-output-data-inner-selected-genres-inner';
 // May contain unused imports in some cases
 // @ts-ignore
+import type { UserLibraryOutputFinishedBooksInner } from './user-library-output-finished-books-inner';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { UserLibraryOutputReadingBooksInnerAuthor } from './user-library-output-reading-books-inner-author';
 
 /**
  * 
  * @export
- * @interface BookCatalogOutputDataInner
+ * @interface InfoById
  */
-export interface BookCatalogOutputDataInner {
+export interface InfoById {
     /**
      * 
      * @type {string}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'summary': string;
     /**
      * 
      * @type {string}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'concept': string;
     /**
      * 
      * @type {string}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'description': string;
     /**
      * 
      * @type {number}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'rating': number;
     /**
      * 
      * @type {boolean}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'isPublic': boolean;
     /**
      * 
      * @type {Array<UserCatalogOutputDataInnerSelectedGenresInner>}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'genres': Array<UserCatalogOutputDataInnerSelectedGenresInner>;
     /**
      * 
      * @type {string}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'id': string;
     /**
      * 
      * @type {string}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'title': string;
     /**
      * 
      * @type {string}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'picture': string;
     /**
      * 
      * @type {UserLibraryOutputReadingBooksInnerAuthor}
-     * @memberof BookCatalogOutputDataInner
+     * @memberof InfoById
      */
     'author': UserLibraryOutputReadingBooksInnerAuthor;
+    /**
+     * 
+     * @type {Array<UserLibraryOutputFinishedBooksInner>}
+     * @memberof InfoById
+     */
+    'fromSameAuthor': Array<UserLibraryOutputFinishedBooksInner>;
 }
 

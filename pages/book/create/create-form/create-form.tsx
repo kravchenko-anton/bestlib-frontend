@@ -1,13 +1,13 @@
-import { Button, Field, FormTextArea } from '@/components/ui';
-import type { FC } from 'react';
-import { Star } from '@/icons/star';
-import { useCreateForm } from '@/pages/book/create/create-form/useCreateForm';
-import SelectGenres from '@/pages/book/components/select-genres';
-import EbookComposer from '@/pages/book/components/ebook-creator/editor';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Controller } from 'react-hook-form';
-import { AuthorSelect } from '@/pages/book/components/author-select/author-select';
-import { SelectPicture } from '@/pages/book/components/select-picture';
+import { Button, Field, FormTextArea } from '@/components/ui'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Star } from '@/icons/star'
+import { AuthorSelect } from '@/pages/book/components/author-select/author-select'
+import EbookComposer from '@/pages/book/components/ebook-creator/editor'
+import SelectGenres from '@/pages/book/components/select-genres'
+import { SelectPicture } from '@/pages/book/components/select-picture'
+import { useCreateForm } from '@/pages/book/create/create-form/useCreateForm'
+import type { FC } from 'react'
+import { Controller } from 'react-hook-form'
 
 export const CreateBookForm: FC = () => {
 	const { control, ...form } = useCreateForm()

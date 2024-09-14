@@ -1,7 +1,7 @@
-import { Field } from '@/components/ui';
-import type { FC, PropsWithChildren } from 'react';
-import { useForm } from 'react-hook-form';
-import { Search } from '@/icons/search';
+import { Field } from '@/components/ui'
+import { Search } from '@/icons/search'
+import type { FC, PropsWithChildren } from 'react'
+import { useForm } from 'react-hook-form'
 
 interface DataTableHeaderProperties {
 	onSearchSubmit: (data: { searchTerm: string }) => void

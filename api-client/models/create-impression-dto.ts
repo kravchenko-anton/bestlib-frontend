@@ -17,38 +17,32 @@
 /**
  * 
  * @export
- * @interface ReactionListOutput
+ * @interface CreateImpressionDto
  */
-export interface ReactionListOutput {
+export interface CreateImpressionDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateImpressionDto
+     */
+    'text': string;
     /**
      * 
      * @type {number}
-     * @memberof ReactionListOutput
+     * @memberof CreateImpressionDto
      */
-    'count': number;
+    'rating': number;
     /**
      * 
      * @type {string}
-     * @memberof ReactionListOutput
+     * @memberof CreateImpressionDto
      */
-    'picture': string;
+    'bookId': string;
     /**
      * 
-     * @type {string}
-     * @memberof ReactionListOutput
+     * @type {Array<string>}
+     * @memberof CreateImpressionDto
      */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReactionListOutput
-     */
-    'title': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReactionListOutput
-     */
-    'author': string;
+    'tags': Array<string>;
 }
 
