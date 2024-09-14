@@ -1,9 +1,9 @@
-import { getTagColor } from '@/pages/book/components/getTagColor';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/utils';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { Pie, PieChart } from 'recharts';
-import { skipTags } from '@/pages/book/components/ebook-reader/ebook-reader';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import { skipTags } from '@/pages/book/components/ebook-reader/ebook-reader'
+import { useTagColor } from '@/pages/book/components/useTagColor'
+import { cn } from '@/utils'
+import { Pie, PieChart } from 'recharts'
 
 interface HtmlTreeGraphProperties {
 	htmlTree: string
@@ -26,7 +26,7 @@ export const HtmlTreeGraph = ({ htmlTree,isHidden }: HtmlTreeGraphProperties) =>
 				accumulator[tag] = accumulator[tag] ? accumulator[tag] + 1 : 1
 				return accumulator
 			}, {})
-	).map(([name, value]) => ({ name, value, fill: getTagColor(name) }))
+	).map(([name, value]) => ({ name, value, fill: useTagColor(name) }))
 	return 		<Card
 		className={cn(
 			'flex flex-col',

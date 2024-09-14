@@ -1,4 +1,4 @@
-import { Color } from '@/utils/colors';
+import { Color } from '@/utils/colors'
 
 export const tagArray = [
 	{
@@ -83,7 +83,7 @@ export const tagArray = [
 	}
 ]
 
-export const getTagColor = (tag: string) => {
+export const useTagColor = (tag: string) => {
 	const foundTag = tagArray.find(({ tag: t }) => t === tag)
 	return foundTag?.color || "#E63946"
 }
