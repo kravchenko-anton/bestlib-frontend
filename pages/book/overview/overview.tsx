@@ -6,7 +6,7 @@ import { ActivityChart } from '@/pages/book/components/charts/activity-chart'
 import { HtmlInfoChart } from '@/pages/book/components/charts/html-info-chart'
 import EbookReader, { skipTags } from '@/pages/book/components/ebook-reader/ebook-reader'
 import { RemoveButton } from '@/pages/book/components/remove-button'
-import { useTagColor } from '@/pages/book/components/useTagColor'
+import { getTagColor } from '@/pages/book/components/tag-color'
 import api from '@/services/api'
 import { cn } from '@/utils'
 import { getFileUrl } from '@/utils/get-file-url'
@@ -122,7 +122,7 @@ export const OverviewBook = ({id}:OverviewBookProperties) => {
 											accumulator[tag] = accumulator[tag] ? accumulator[tag] + 1 : 1;
 											return accumulator;
 										}, {})
-								).map(([name, value]) => ({ name, value, fill: useTagColor(name) }))}
+								).map(([name, value]) => ({ name, value, fill: getTagColor(name) }))}
 							/>
 						</div>
 					</div>

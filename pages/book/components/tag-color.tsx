@@ -83,7 +83,7 @@ export const tagArray = [
 	}
 ]
 
-export const useTagColor = (tag: string) => {
+export const getTagColor = (tag: string) => {
 	const foundTag = tagArray.find(({ tag: t }) => t === tag)
 	return foundTag?.color || "#E63946"
 }
