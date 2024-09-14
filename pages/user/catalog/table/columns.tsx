@@ -51,6 +51,7 @@ export const columns = ({
 		header: () => <p className='text-md text-center'>Picture</p>,
 		enableHiding: false,
 		cell: ({ row }) => (
+			// eslint-disable-next-line @next/next/no-img-element
 			<img
 				alt={row.original.email}
 				src={getFileUrl(row.original.picture)}

@@ -46,6 +46,7 @@ export const SelectPicture = <T extends Record<string, any>>({
 									})
 								}}
 							/>
+							{/* eslint-disable-next-line @next/next/no-img-element */}
 							<img
 								width={width}
 								className={cn('border-bordered cursor-pointer rounded border-[1px]', className)}

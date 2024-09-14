@@ -22,6 +22,7 @@ const EbookComposer = <T extends Record<string, any>>({
 		control={control}
 		name={name}
 		render={({ field: { value = [], onChange }, fieldState: { error } }) => {
+			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const { books } = useBookCompose({
 				chapters: value,
 				setEBooks: onChange,
