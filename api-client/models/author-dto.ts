@@ -13,6 +13,9 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import type { AuthorDtoBooksInner } from './author-dto-books-inner';
 
 /**
  * 
@@ -44,5 +47,11 @@ export interface AuthorDto {
      * @memberof AuthorDto
      */
     'picture': string;
+    /**
+     * 
+     * @type {Array<AuthorDtoBooksInner>}
+     * @memberof AuthorDto
+     */
+    'books': Array<AuthorDtoBooksInner>;
 }
 

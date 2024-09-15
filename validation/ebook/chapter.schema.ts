@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const ChapterSchema = z.object({
 	title: z.string().refine(value => value !== 'undefined', {
@@ -6,7 +6,9 @@ export const ChapterSchema = z.object({
 	}),
 	content: z.string(),
 	position: z.number(),
-	id: z.string()
+	id: z.string(),
+	wordCount: z.number().positive().min(5),
+	symbolCount: z.number().positive().min(5)
 });
 
 export const UpdateChapterSchema = z.object({
@@ -20,13 +22,13 @@ export const UpdateChapterSchema = z.object({
 	position: z.number().optional()
 });
 
-export const ChapterPayloadSchema = ChapterSchema.omit({ id: true });
-
-export const UnfoldChapterSchema = ChapterSchema.omit({ position: true });
-export const OutputChapterSchema = z.object({
-	title: z.string(),
-	link: z.string()
-});
+export const ChapterPayloadSchema = ChapterSchema.omit({ id: true }).merge(
+	z.object({
+		wordCount: z.number().positive().min(5),
+		symbolCount: z.number().positive().min(5)
+	})
+);
+export const UnfoldChapterSchema = ChapterSchema
 
 export type UnfoldChapterType = z.infer<typeof UnfoldChapterSchema>;
 export type ChapterType = z.infer<typeof ChapterPayloadSchema>;

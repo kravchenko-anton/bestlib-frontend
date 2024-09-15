@@ -8,6 +8,5 @@ export const secureRoutes = {
 }
 
 export const publicRoutes = {
-	login: '/login',
-	dashboard: '/admin/dashboard',
+	login: '/',
 }

@@ -1,6 +1,6 @@
 import { ShortGenreSchema } from '@/validation/short-genre.schema'
-import { z } from 'zod';
-import { ChapterPayloadSchema } from '../ebook/chapter.schema';
+import { z } from 'zod'
+import { ChapterPayloadSchema } from '../ebook/chapter.schema'
 
 export enum ageEnum {
 	all = 'all',
@@ -10,7 +10,6 @@ export enum ageEnum {
 }
 export const CreateBookSchema = z.object({
 	title: z.string(),
-	slug: z.string(),
 	age: z.nativeEnum(ageEnum),
 	authorId: z.string(),
 	summary: z.string().min(10),

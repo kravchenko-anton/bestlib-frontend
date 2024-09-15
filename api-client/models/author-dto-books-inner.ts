@@ -17,38 +17,32 @@
 /**
  * 
  * @export
- * @interface UpdateChapterDto
+ * @interface AuthorDtoBooksInner
  */
-export interface UpdateChapterDto {
+export interface AuthorDtoBooksInner {
     /**
      * 
      * @type {string}
-     * @memberof UpdateChapterDto
+     * @memberof AuthorDtoBooksInner
      */
-    'title'?: string;
+    'id': string;
     /**
      * 
      * @type {string}
-     * @memberof UpdateChapterDto
+     * @memberof AuthorDtoBooksInner
      */
-    'content'?: string;
+    'title': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthorDtoBooksInner
+     */
+    'picture': string;
     /**
      * 
      * @type {number}
-     * @memberof UpdateChapterDto
+     * @memberof AuthorDtoBooksInner
      */
-    'position'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateChapterDto
-     */
-    'wordCount'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateChapterDto
-     */
-    'symbolCount'?: number;
+    'rating': number;
 }
 

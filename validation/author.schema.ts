@@ -1,5 +1,5 @@
 import { BaseCatalogSchema } from '@/validation/base.catalog.schema'
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const CreateAuthorSchema = z.object({
 	name: z.string(),
@@ -12,6 +12,9 @@ export const AuthorSchema = z.object({
 	description: z.string(),
 	picture: z.string()
 });
+
+
+
 export const CatalogOutputSchema = z
 	.object({
 		data: z.array(AuthorSchema)

@@ -1,12 +1,10 @@
 'use client';
-import { cn } from '@/utils';
-import { tapAnimation } from '@/utils/framer-animation';
-import { motion } from 'framer-motion';
-import type { FC } from 'react';
-import Loader from '../loader/loader';
-import { settings } from './settings';
-import type { ButtonProperties } from './types';
-import { InnerColor } from '@/utils/colors';
+import { cn } from '@/utils'
+import { InnerColor } from '@/utils/colors'
+import type { FC } from 'react'
+import Loader from '../loader/loader'
+import { settings } from './settings'
+import type { ButtonProperties } from './types'
 
 const Button: FC<ButtonProperties> = ({
 	children,
@@ -19,7 +17,7 @@ const Button: FC<ButtonProperties> = ({
 	className,
 	...properties
 }) => (
-	<motion.button
+	<button
 		disabled={disabled || isLoading}
 		className={cn(
 			'flex cursor-pointer items-center justify-center gap-2 rounded px-3 py-1.5 font-bold duration-200 ease-linear',
@@ -29,7 +27,6 @@ const Button: FC<ButtonProperties> = ({
 			fullWidth ? 'w-full' : '',
 			className
 		)}
-		{...tapAnimation}
 		{...properties}>
 		{children}
 
@@ -47,7 +44,7 @@ const Button: FC<ButtonProperties> = ({
 				height={settings.iconSize[size]}
 			/>
 		)}
-	</motion.button>
+	</button>
 )
 
 export default Button

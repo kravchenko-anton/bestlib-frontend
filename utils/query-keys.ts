@@ -108,6 +108,8 @@ export const MutationKeys = {
 		syncHistory: ['sync-history']
 	},
 	author: {
+		create: ['create-author'],
+		update: ['update-author'],
 		remove: ['remove-user'],
 	},
 	storage: {

@@ -1,13 +1,15 @@
-import { UpdateBookDto } from '@/api-client';
-import { MutationKeys, QueryKeys } from '@/utils/query-keys';
-import api from '@/services/api';
-import { errorToast, successToast } from '@/utils/toast';
-import { dirtyValues } from '@/utils/getDirtyValues';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { UpdateBookProperties } from '@/pages/book/update/update';
-import { UpdateChapterDto } from '@/api-client/models';
+import { UpdateBookDto } from '@/api-client'
+import { UpdateChapterDto } from '@/api-client/models'
+import { UpdateBookProperties } from '@/pages/book/update/update'
+import api from '@/services/api'
+import { dirtyValues } from '@/utils/getDirtyValues'
+import { MutationKeys, QueryKeys } from '@/utils/query-keys'
+import { errorToast, successToast } from '@/utils/toast'
+import { UpdateBookSchema } from '@/validation/book/update.book.schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 
 export const useUpdateBook 		= ({bookId}:UpdateBookProperties) => {
 	const queryClient = useQueryClient()
@@ -16,7 +18,9 @@ export const useUpdateBook 		= ({bookId}:UpdateBookProperties) => {
 		reset,
 		handleSubmit,
 		formState: { errors, dirtyFields }
-	} = useForm<UpdateBookDto>()
+	} = useForm<UpdateBookDto>({
+		resolver: zodResolver(UpdateBookSchema)
+	})
 
 	const { data: book } = useQuery({
 		queryKey: QueryKeys.book.adminInfoById(bookId),

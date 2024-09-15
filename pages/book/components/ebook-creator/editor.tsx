@@ -1,16 +1,16 @@
-import { DropZone, Input, TextArea } from '@/components/ui'
+import { Button, DropZone, Input, TextArea } from '@/components/ui'
 import { CaseSensitive } from '@/icons/case-sensitive'
 import { Close } from '@/icons/close'
 import { Copy } from '@/icons/copy'
 import { HardDriveDownload } from '@/icons/hard-drive-download'
 import { HardDriveUpload } from '@/icons/hard-drive-upload'
+import { Settings } from '@/icons/settings'
 import { HtmlTreeGraph } from '@/pages/book/components/ebook-creator/html-tree-graph'
 import { TrimContentMenu } from '@/pages/book/components/ebook-creator/trim-content-menu'
 import { useBookCompose } from '@/pages/book/components/ebook-creator/useBookCompose'
 import { BaseFieldProperties } from '@/types/form-types'
 import { TapComponent } from '@/utils/framer-animation'
 import { successToast } from '@/utils/toast'
-
 import * as React from 'react'
 import { Controller } from 'react-hook-form'
 
@@ -21,13 +21,12 @@ const EbookComposer = <T extends Record<string, any>>({
 	<Controller
 		control={control}
 		name={name}
-		render={({ field: { value = [], onChange }, fieldState: { error } }) => {
+		render={({ field: { value = [], onChange } }) => {
 			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const { books } = useBookCompose({
 				chapters: value,
 				setEBooks: onChange,
 			})
-
 			return (
 				<div className='md:w-max md:overflow-y-scroll '>
 					<div className='mb-4'>
@@ -48,7 +47,7 @@ const EbookComposer = <T extends Record<string, any>>({
 												books.delete()
 											}}
 										/>
-
+									
 										<TapComponent>
 											<div
 												title='download ebook (for validation)'
@@ -125,6 +124,9 @@ const EbookComposer = <T extends Record<string, any>>({
 													key={chapter.id}
 													className='bg-muted mb-2 rounded p-2'>
 													<div className='mb-2 flex w-full items-center justify-between gap-2'>
+														<h1 className='bg-foreground border-2 border-bordered px-2 rounded-full'>
+															{chapter.position}
+														</h1>
 														<Input
 															variant='foreground'
 															value={chapter.title}
@@ -138,7 +140,10 @@ const EbookComposer = <T extends Record<string, any>>({
 															}}
 														/>
 
-														<div className='flex gap-2'>
+														<div className='flex gap-2 items-center'>
+															<h2 className='text-sm w-[200px]'>
+																{`${chapter.symbolCount} symbols | ${chapter.wordCount} words`}
+															</h2>
 															<Close
 																width={34}
 																height={34}
@@ -166,6 +171,10 @@ const EbookComposer = <T extends Record<string, any>>({
 													</div>
 												</div>
 											))}
+							
+									<Button icon={Settings} size='md' variant='primary'  className='mt-4' onClick={books.calculateChapters}>
+										Calculate chapters data
+									</Button>
 						</div>
 					</div>
 				</div>

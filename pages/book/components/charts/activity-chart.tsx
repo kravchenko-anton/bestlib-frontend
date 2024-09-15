@@ -1,9 +1,6 @@
 'use client';
 
-import * as React from 'react';
-import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import {
 	type ChartConfig,
 	ChartContainer,
@@ -11,9 +8,11 @@ import {
 	ChartLegendContent,
 	ChartTooltip,
 	ChartTooltipContent
-} from '@/components/ui/chart';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@radix-ui/react-select';
-import { Color } from '@/utils/colors';
+} from '@/components/ui/chart'
+import { Color } from '@/utils/colors'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@radix-ui/react-select'
+import * as React from 'react'
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 const chartConfig = {
 	readingTimeMin: {
@@ -32,7 +31,6 @@ export const ActivityChart = ({
 	chartData: {
 		date: string
 		readingTimeMin: number
-		pagesRead: number
 		progressDelta: number
 	}[]
 }) => {

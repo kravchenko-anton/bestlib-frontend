@@ -15,7 +15,7 @@ import { useAuthStore } from '@/pages/login/auth/auth-store'
 import { cn } from '@/utils'
 import { Color } from '@/utils/colors'
 import { tapAnimation } from '@/utils/framer-animation'
-import { secureRoutes } from '@/utils/route'
+import { publicRoutes, secureRoutes } from '@/utils/route'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -86,7 +86,11 @@ export const Sidebar: FC = () => {
 								</DropdownMenuItem>
 							))}
 							<DropdownMenuSeparator />
-							<DropdownMenuItem onClick={logout}>
+							<DropdownMenuItem onClick={( ) => {
+								logout()
+								router.push(publicRoutes.login)
+								
+							}}>
 								<Logout width={22} height={22} className='mr-2' />
 								Logout
 							</DropdownMenuItem>

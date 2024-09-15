@@ -1,9 +1,9 @@
-import api from '@/services/api';
-import { errorToast, successToast } from '@/utils/toast';
+import { chapterNames } from '@/pages/book/components/ebook-creator/chapter-names'
+import api from '@/services/api'
+import { MutationKeys } from '@/utils/query-keys'
+import { errorToast, successToast } from '@/utils/toast'
 import type { UnfoldChapterType } from '@/validation/ebook/chapter.schema'
-import { useMutation } from '@tanstack/react-query';
-import { MutationKeys } from '@/utils/query-keys';
-import { chapterNames } from '@/pages/book/components/ebook-creator/chapter-names';
+import { useMutation } from '@tanstack/react-query'
 import type { Dispatch, SetStateAction } from 'react'
 
 export const useBookCompose = ({
@@ -48,9 +48,8 @@ export const useBookCompose = ({
 	}) => {
 		if (!chapters) return errorToast('Error trimming book')
 		setEBooks(
-			chapters.map(({ id, content,title }) => ({
-				id,
-				title,
+			chapters.map(({ content,...rest }) => ({
+				...rest,
 				content: content
 					.split('\n')
 					.filter(
@@ -89,6 +88,9 @@ export const useBookCompose = ({
 		value: {
 			title?: string
 			content?: string
+			position?: number
+			wordCount?: number
+			symbolCount?: number
 		}
 	}) => {
 		if (!chapters) return errorToast('Error updating chapter')
@@ -107,14 +109,15 @@ export const useBookCompose = ({
 	}
 
 	const upload = ({
-		title,
 		chapters
 	}: {
-		title: string
 		chapters: {
 			id: string
 			title: string
 			content: string
+			position: number
+			wordCount: number
+			symbolCount: number
 		}[]
 	}) => {
 		console.log('uploading', chapters)
@@ -125,17 +128,40 @@ export const useBookCompose = ({
 	const unfoldWithUpload = (file: File) => {
 			unfold(new File([file], file.name)).then(
 				({ data: { chapters } }) => {
+					
 					upload({
-						title: file.name,
-						chapters
+						chapters: chapters.map((chapter, index) => {
+							const dom = new DOMParser().parseFromString(chapter.content, 'text/html')
+							const wordCount = Number(dom.body?.textContent?.split(' ').length)
+							const symbolCount = Number(dom.body?.textContent?.length)
+							return {
+								...chapter,
+								position: index + 1,
+								wordCount,
+								symbolCount
+							}
+						})
 					})
 				}
 			)
 	}
-
+	const calculateChapters = () => {
+		setEBooks( chapters.map((chapter, index) => {
+			const dom = new DOMParser().parseFromString(chapter.content, 'text/html')
+			const wordCount = Number(dom.body?.textContent?.split(' ').length)
+			const symbolCount = Number(dom.body?.textContent?.length)
+			return {
+				...chapter,
+				position: index + 1,
+				wordCount,
+				symbolCount
+			}
+		}))
+	}
 console.log(chapters)
 	return {
 		books: {
+			calculateChapters,
 			stashEBook,
 			unStashEBook,
 			upload: unfoldWithUpload,

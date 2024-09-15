@@ -1,3 +1,4 @@
+import { Button, Field } from '@/components/ui'
 import {
 	Dialog,
 	DialogContent,
@@ -6,22 +7,20 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger
-} from '@/components/ui/dialog';
-import { Button, Field } from '@/components/ui';
-import { MutationKeys, QueryKeys } from '@/utils/query-keys';
+} from '@/components/ui/dialog'
+import { SelectPicture } from '@/pages/book/components/select-picture'
 
-import api from '@/services/api';
-import { AuthorSchema } from '@/validation/author.schema'
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useForm } from 'react-hook-form';
-import { SelectPicture } from '@/pages/book/components/select-picture';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { AuthorDto } from '@/api-client';
-import { successToast } from '@/utils/toast';
+import api from '@/services/api'
+import { MutationKeys, QueryKeys } from '@/utils/query-keys'
+import { successToast } from '@/utils/toast'
+import { AuthorSchema, type AuthorSchemaType } from '@/validation/author.schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
 
-export const AuthorUpdate = ({picture,name,	id,description}:  AuthorDto) => {
+export const AuthorUpdate = ({picture,name,	id,description}:  AuthorSchemaType) => {
 	const queryClient = useQueryClient()
-	const {control, handleSubmit, formState: {errors}} = useForm<AuthorDto>({
+	const {control, handleSubmit, formState: {errors}} = useForm<AuthorSchemaType>({
 		resolver: zodResolver(AuthorSchema),
 		defaultValues: {
 			picture,
@@ -31,9 +30,9 @@ export const AuthorUpdate = ({picture,name,	id,description}:  AuthorDto) => {
 		}
 	})
 	const { mutateAsync: update } = useMutation({
-		mutationKey: MutationKeys.book.createBook,
-		mutationFn: (payload: AuthorDto) => api.author.update(payload),
-		onSuccess: async data => {
+		mutationKey: MutationKeys.author.update,
+		mutationFn: (payload: AuthorSchemaType) => api.author.update(payload),
+		onSuccess: async () => {
 		await 	queryClient.invalidateQueries({
 				queryKey: QueryKeys.searchByTerm('')
 			})
@@ -41,7 +40,7 @@ export const AuthorUpdate = ({picture,name,	id,description}:  AuthorDto) => {
 		}
 	})
 
-	const onSubmit = async (data: AuthorDto) => {
+	const onSubmit = async (data: AuthorSchemaType) => {
 		await update(data)
 	}
 

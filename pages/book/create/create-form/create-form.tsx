@@ -86,13 +86,6 @@ export const CreateBookForm: FC = () => {
 
 						</div>
 					</div>
-					<h1 className="mb-2 mt-4">Slug</h1>
-					<Field
-						type="string"
-						control={control}
-						name="slug"
-						placeholder="Slug"
-					/>
 					<div className="flex gap-5 justify-between">
 						<div className="w-full">
 							<h1 className="mb-2 mt-4">Description</h1>
