@@ -1,12 +1,12 @@
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
-import type { ColumnDef } from '@tanstack/react-table';
+import { AuthorCatalogOutputDataInner } from '@/api-client'
+import { AuthorUpdate } from '@/app/admin/author/catalog/author-update'
+import { Button } from '@/components/ui'
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
+import { getFileUrl } from '@/utils/get-file-url'
+import { infoToast } from '@/utils/toast'
+import type { ColumnDef } from '@tanstack/react-table'
 
-import Image from 'next/image';
-import { getFileUrl } from '@/utils/get-file-url';
-import { AuthorCatalogOutputDataInner } from '@/api-client';
-import { infoToast } from '@/utils/toast';
-import { Button } from '@/components/ui';
-import { AuthorUpdate } from '@/pages/author/author-update';
+import Image from 'next/image'
 
 export interface AuthorCatalogProperties{
 	remove: (id: string) => void

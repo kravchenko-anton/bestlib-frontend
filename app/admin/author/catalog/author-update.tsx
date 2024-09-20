@@ -1,3 +1,4 @@
+import { SelectPicture } from '@/app/admin/book/components/select-picture'
 import { Button, Field } from '@/components/ui'
 import {
 	Dialog,
@@ -8,7 +9,6 @@ import {
 	DialogTitle,
 	DialogTrigger
 } from '@/components/ui/dialog'
-import { SelectPicture } from '@/pages/book/components/select-picture'
 
 import api from '@/services/api'
 import { MutationKeys, QueryKeys } from '@/utils/query-keys'

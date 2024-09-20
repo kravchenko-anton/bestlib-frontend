@@ -1,6 +1,6 @@
 import { UpdateBookDto } from '@/api-client'
 import { UpdateChapterDto } from '@/api-client/models'
-import { UpdateBookProperties } from '@/pages/book/update/update'
+import type { UpdateBookProperties } from '@/app/admin/book/[id]/update/update'
 import api from '@/services/api'
 import { dirtyValues } from '@/utils/getDirtyValues'
 import { MutationKeys, QueryKeys } from '@/utils/query-keys'

@@ -1,7 +1,7 @@
-import { deleteTokensStorage, getAccessToken, getNewTokens } from '@/pages/login/auth/auth-helper';
-import { errorToast } from '@/utils/toast';
-import axios, { type InternalAxiosRequestConfig } from 'axios';
-import { errorCatch } from '@/utils/catch-error';
+import { deleteTokensStorage, getAccessToken, getNewTokens } from '@/app/auth/auth-helper'
+import { errorCatch } from '@/utils/catch-error'
+import { errorToast } from '@/utils/toast'
+import axios, { type InternalAxiosRequestConfig } from 'axios'
 
 const componentType = typeof window === 'undefined' ? 'server' : 'client'
 

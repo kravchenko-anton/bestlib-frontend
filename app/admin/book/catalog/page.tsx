@@ -1,9 +1,9 @@
 'use client';
-import { BookCatalogTable } from '@/pages/book/catalog/table/book-catalog-table';
-import type { NextPageProps } from '@/types/global';
-import { validateNumberParameter, validateStringParameter } from '@/utils/validate-parameter';
-import type { FC } from 'react';
-import { UseBookCatalog } from '@/pages/book/catalog/useBookCatalog';
+import { BookCatalogTable } from '@/app/admin/book/catalog/table/book-catalog-table'
+import { UseBookCatalog } from '@/app/admin/book/catalog/useBookCatalog'
+import type { NextPageProps } from '@/types/global'
+import { validateNumberParameter, validateStringParameter } from '@/utils/validate-parameter'
+import type { FC } from 'react'
 
 const Page: FC<NextPageProps> = ({ searchParams }) => {
 	const searchTerm = validateStringParameter(searchParams?.searchTerm)

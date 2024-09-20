@@ -1,15 +1,15 @@
 'use client';
-import { columns } from '@/pages/book/catalog/table/columns';
-import DataTable from '@/components/catalog/data-table';
-import DataTableHeader from '@/components/catalog/table-search';
-import { Button } from '@/components/ui';
-import { generateParameters } from '@/utils/generate-parameters';
-import { secureRoutes } from '@/utils/route';
-import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-import { BookCatalogOutput } from '@/api-client';
+import { BookCatalogOutput } from '@/api-client'
+import { columns } from '@/app/admin/book/catalog/table/columns'
+import DataTable from '@/components/catalog/data-table'
+import DataTableHeader from '@/components/catalog/table-search'
+import { Button } from '@/components/ui'
+import { generateParameters } from '@/utils/generate-parameters'
+import { secureRoutes } from '@/utils/route'
+import { getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import type { FC } from 'react'
 
 interface BookCatalogTableProperties {
 	books: BookCatalogOutput | undefined

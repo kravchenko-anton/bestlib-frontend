@@ -1,6 +1,6 @@
 'use client';
 
-import { Login } from '@/pages/login/login'
+import { Login } from '@/app/login'
 import { loginRoute } from '@/providers/secure-route'
 
 const Page = () => <Login/>

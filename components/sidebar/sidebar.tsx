@@ -1,3 +1,4 @@
+import { useAuthStore } from '@/app/auth/auth-store'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -11,7 +12,6 @@ import { MoreHorizontal } from '@/icons/more-horizontal'
 import { Star } from '@/icons/star'
 import { User } from '@/icons/user'
 import { UserPen } from '@/icons/user-pen'
-import { useAuthStore } from '@/pages/login/auth/auth-store'
 import { cn } from '@/utils'
 import { Color } from '@/utils/colors'
 import { tapAnimation } from '@/utils/framer-animation'

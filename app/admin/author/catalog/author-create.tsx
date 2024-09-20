@@ -1,3 +1,6 @@
+import type { CreateAuthorDto } from '@/api-client'
+import { SelectPicture } from '@/app/admin/book/components/select-picture'
+import { Button, Field } from '@/components/ui'
 import {
 	Dialog,
 	DialogContent,
@@ -6,17 +9,14 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger
-} from '@/components/ui/dialog';
-import { Button, Field } from '@/components/ui';
-import { MutationKeys, QueryKeys } from '@/utils/query-keys';
-import type { CreateAuthorDto } from '@/api-client';
-import api from '@/services/api';
+} from '@/components/ui/dialog'
+import api from '@/services/api'
+import { MutationKeys, QueryKeys } from '@/utils/query-keys'
+import { successToast } from '@/utils/toast'
 import { CreateAuthorSchema } from '@/validation/author.schema'
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useForm } from 'react-hook-form';
-import { SelectPicture } from '@/pages/book/components/select-picture';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { successToast } from '@/utils/toast';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
 
 export const AuthorCreate = () => {
 	const queryClient = useQueryClient()

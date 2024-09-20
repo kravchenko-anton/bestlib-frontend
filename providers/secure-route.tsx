@@ -1,10 +1,10 @@
 'use client';
 
-import { getRefreshToken } from '@/pages/login/auth/auth-helper';
-import { useAuthStore } from '@/pages/login/auth/auth-store';
-import { publicRoutes, secureRoutes } from '@/utils/route';
-import { redirect } from 'next/navigation';
-import { type FC, useEffect } from 'react';
+import { getRefreshToken } from '@/app/auth/auth-helper'
+import { useAuthStore } from '@/app/auth/auth-store'
+import { publicRoutes, secureRoutes } from '@/utils/route'
+import { redirect } from 'next/navigation'
+import { type FC, useEffect } from 'react'
 
 export const loginRoute = (Component: FC) =>
 	function (properties: NonNullable<unknown>) {

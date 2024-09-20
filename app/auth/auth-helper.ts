@@ -1,6 +1,6 @@
-import Cookies from 'js-cookie';
-import api from '../../../services/api';
-import { errorCatch } from '@/utils/catch-error';
+import api from '@/services/api'
+import { errorCatch } from '@/utils/catch-error'
+import Cookies from 'js-cookie'
 
 export const getAccessToken = () => {
 	const accessToken = Cookies.get('accessToken')

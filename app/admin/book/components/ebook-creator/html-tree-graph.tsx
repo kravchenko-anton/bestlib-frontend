@@ -1,7 +1,7 @@
+import { skipTags } from '@/app/admin/book/components/ebook-reader/ebook-reader'
+import { getTagColor } from '@/app/admin/book/components/tag-color'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
-import { skipTags } from '@/pages/book/components/ebook-reader/ebook-reader'
-import { getTagColor } from '@/pages/book/components/tag-color'
 import { cn } from '@/utils'
 import { Pie, PieChart } from 'recharts'
 

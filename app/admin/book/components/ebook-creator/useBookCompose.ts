@@ -1,4 +1,4 @@
-import { chapterNames } from '@/pages/book/components/ebook-creator/chapter-names'
+import { chapterNames } from '@/app/admin/book/components/ebook-creator/chapter-names'
 import api from '@/services/api'
 import { MutationKeys } from '@/utils/query-keys'
 import { errorToast, successToast } from '@/utils/toast'

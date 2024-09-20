@@ -1,18 +1,18 @@
 'use client';
-import DataTable from '@/components/catalog/data-table';
-import DataTableHeader from '@/components/catalog/table-search';
-import { generateParameters } from '@/utils/generate-parameters';
-import { secureRoutes } from '@/utils/route';
-import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-import { columns } from '@/pages/author/table/columns';
-import { AuthorCatalogOutput } from '@/api-client';
-import { MutationKeys, QueryKeys } from '@/utils/query-keys';
-import api from '@/services/api';
-import { successToast } from '@/utils/toast';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { AuthorCreate } from '@/pages/author/author-create';
+import { AuthorCatalogOutput } from '@/api-client'
+import { AuthorCreate } from '@/app/admin/author/catalog/author-create'
+import { columns } from '@/app/admin/author/catalog/table/columns'
+import DataTable from '@/components/catalog/data-table'
+import DataTableHeader from '@/components/catalog/table-search'
+import api from '@/services/api'
+import { generateParameters } from '@/utils/generate-parameters'
+import { MutationKeys, QueryKeys } from '@/utils/query-keys'
+import { secureRoutes } from '@/utils/route'
+import { successToast } from '@/utils/toast'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { useRouter } from 'next/navigation'
+import type { FC } from 'react'
 
 interface AuthorCatalogTableProperties {
 	authors: AuthorCatalogOutput | undefined

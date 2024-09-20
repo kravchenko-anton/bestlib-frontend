@@ -16,6 +16,12 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import type { EbookOutputChaptersInner } from './ebook-output-chapters-inner';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { EbookOutputFunctionEnums } from './ebook-output-function-enums';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { UserLibraryOutputReadingBooksInnerAuthor } from './user-library-output-reading-books-inner-author';
 
 /**
  * 
@@ -25,16 +31,28 @@ import type { EbookOutputChaptersInner } from './ebook-output-chapters-inner';
 export interface EbookOutput {
     /**
      * 
+     * @type {Array<EbookOutputChaptersInner>}
+     * @memberof EbookOutput
+     */
+    'chapters': Array<EbookOutputChaptersInner>;
+    /**
+     * 
      * @type {string}
      * @memberof EbookOutput
      */
     'file': string;
     /**
      * 
-     * @type {Array<EbookOutputChaptersInner>}
+     * @type {string}
      * @memberof EbookOutput
      */
-    'chapters': Array<EbookOutputChaptersInner>;
+    'onLoadScript': string;
+    /**
+     * 
+     * @type {EbookOutputFunctionEnums}
+     * @memberof EbookOutput
+     */
+    'functionEnums': EbookOutputFunctionEnums;
     /**
      * 
      * @type {string}
@@ -47,5 +65,11 @@ export interface EbookOutput {
      * @memberof EbookOutput
      */
     'picture': string;
+    /**
+     * 
+     * @type {UserLibraryOutputReadingBooksInnerAuthor}
+     * @memberof EbookOutput
+     */
+    'author': UserLibraryOutputReadingBooksInnerAuthor;
 }
 

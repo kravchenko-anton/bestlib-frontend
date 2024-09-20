@@ -1,11 +1,11 @@
-import api from '@/services/api';
-import { saveTokensStorage } from '@/pages/login/auth/auth-helper';
-import { errorToast } from '@/utils/toast';
+import { saveTokensStorage } from '@/app/auth/auth-helper'
+import type { AuthDtoType } from '@/app/auth/auth.types'
+import api from '@/services/api'
+import { errorToast } from '@/utils/toast'
+import { AuthOutput } from 'api-client/models'
 
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-import { AuthOutput } from 'api-client/models';
-import { AuthDtoType } from '@/pages/login/auth/auth.types';
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface AuthStoreStateType {
 	isLoading: 'google' | 'mail-login' | false

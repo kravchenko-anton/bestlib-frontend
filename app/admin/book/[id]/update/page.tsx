@@ -1,7 +1,7 @@
 "use client";
-import { UpdateBook } from '@/pages/book/update/update';
-import { useParams } from 'next/navigation';
-import { validateStringParameter } from '@/utils/validate-parameter';
+import { UpdateBook } from '@/app/admin/book/[id]/update/update'
+import { validateStringParameter } from '@/utils/validate-parameter'
+import { useParams } from 'next/navigation'
 
 const Page = () => {
 	const parameters = useParams()

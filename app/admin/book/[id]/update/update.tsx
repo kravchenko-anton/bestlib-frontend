@@ -1,11 +1,12 @@
+import { UpdatableChapter } from '@/app/admin/book/[id]/update/updatable-chapter'
+import { useUpdateBook } from '@/app/admin/book/[id]/update/useUpdateBook'
+import { AuthorSelect } from '@/app/admin/book/components/author-select/author-select'
+import SelectGenres from '@/app/admin/book/components/select-genres'
+import { SelectPicture } from '@/app/admin/book/components/select-picture'
 import { Button, Field, FormTextArea } from '@/components/ui'
 import Loader from '@/components/ui/loader/loader'
 import { Star } from '@/icons/star'
-import { AuthorSelect } from '@/pages/book/components/author-select/author-select'
-import SelectGenres from '@/pages/book/components/select-genres'
-import { SelectPicture } from '@/pages/book/components/select-picture'
-import { UpdatableChapter } from '@/pages/book/update/updatable-chapter'
-import { useUpdateBook } from '@/pages/book/update/useUpdateBook'
+
 import { Controller } from 'react-hook-form'
 
 export interface UpdateBookProperties {

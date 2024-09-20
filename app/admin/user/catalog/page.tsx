@@ -1,7 +1,7 @@
 'use client';
 
-import { type FC } from 'react';
-import { UserCatalog } from '@/pages/user/catalog/user-catalog';
+import { UserCatalog } from '@/app/admin/user/catalog/user-catalog'
+import { type FC } from 'react'
 
 const Page: FC = () =><UserCatalog/>
 
