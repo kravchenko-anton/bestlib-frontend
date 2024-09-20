@@ -16,6 +16,7 @@ import { secureRoutes } from '@/utils/route'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { parse } from 'node-html-parser'
 
 export interface OverviewBookProperties {
 	id: string;
@@ -112,11 +113,11 @@ export const OverviewBook = ({id}:OverviewBookProperties) => {
 							<HtmlInfoChart
 								data={Object.entries(
 									[
-										...new DOMParser()
-											.parseFromString(ebook?.file as string, 'text/html')
+										parse(ebook?.file || '')
 											.querySelectorAll('*')
 									]
-										.map(tag => tag.nodeName)
+										.flat()
+										.map((element) => element.tagName)
 										.reduce((accumulator, tag) => {
 											if (skipTags.has(tag)) return accumulator;
 											// @ts-ignore

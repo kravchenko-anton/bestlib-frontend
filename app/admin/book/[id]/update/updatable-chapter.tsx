@@ -4,6 +4,7 @@ import { Copy } from '@/icons/copy'
 import { Settings } from '@/icons/settings'
 import { getDirtyFields } from '@/utils/getDirtyValues'
 import { successToast } from '@/utils/toast'
+import { parse } from 'node-html-parser'
 import { useState } from 'react'
 
 interface UpdatableChapterProperties extends UpdateChapterDto{
@@ -26,9 +27,10 @@ export const UpdatableChapter = ({ updateChapter,  chapterId, ...defaultValue}: 
 					width={20}
 					height={20}
 					onClick={() => {
-						const dom = new DOMParser().parseFromString(value?.content || "", 'text/html')
-						const wordCount = Number(dom?.body.textContent?.split(' ').length)
-						const symbolCount = Number(dom?.body.textContent?.length)
+						const dom = parse(value?.content || "")
+						const body = dom.querySelector('body')
+						const wordCount = Number(body?.textContent?.split(' ').length)
+						const symbolCount = Number(body?.textContent?.length)
 						setValue({ ...value, wordCount, symbolCount })
 						successToast('Chapter settings updated')
 						
@@ -40,8 +42,9 @@ export const UpdatableChapter = ({ updateChapter,  chapterId, ...defaultValue}: 
 					width={20}
 					height={20}
 					onClick={() => {
-						const dom = new DOMParser().parseFromString(value?.content || "", 'text/html')
-						navigator.clipboard.writeText(dom?.body.textContent || "")
+						const dom = parse(value?.content || "")
+						const body = dom.querySelector('body')
+						navigator.clipboard.writeText(body?.textContent || "")
 						successToast('Chapter copied to clipboard')
 					}}
 				/>

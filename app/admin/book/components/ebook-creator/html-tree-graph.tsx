@@ -3,6 +3,7 @@ import { getTagColor } from '@/app/admin/book/components/tag-color'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import { cn } from '@/utils'
+import { parse } from 'node-html-parser'
 import { Pie, PieChart } from 'recharts'
 
 interface HtmlTreeGraphProperties {
@@ -12,13 +13,14 @@ interface HtmlTreeGraphProperties {
 
 
 export const HtmlTreeGraph = ({ htmlTree,isHidden }: HtmlTreeGraphProperties) => {
+	
 	const data = Object.entries(
 		[
-			...new DOMParser()
-				.parseFromString(htmlTree, 'text/html')
+			parse(htmlTree)
 				.querySelectorAll('*')
 		]
-			.map(tag => tag.nodeName)
+			.flat()
+			.map((element) => element.tagName)
 			.reduce((accumulator, tag) => {
 				if (skipTags.has(tag))
 					return accumulator
