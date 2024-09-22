@@ -1,10 +1,10 @@
 import { UpdateChapterDto } from '@/api-client/models'
+import { textCalculation } from '@/app/admin/book/components/ebook-creator/useBookCompose'
 import { Button, Input, TextArea } from '@/components/ui'
 import { Copy } from '@/icons/copy'
 import { Settings } from '@/icons/settings'
 import { getDirtyFields } from '@/utils/getDirtyValues'
 import { successToast } from '@/utils/toast'
-import { parse } from 'node-html-parser'
 import { useState } from 'react'
 
 interface UpdatableChapterProperties extends UpdateChapterDto{
@@ -27,10 +27,7 @@ export const UpdatableChapter = ({ updateChapter,  chapterId, ...defaultValue}: 
 					width={20}
 					height={20}
 					onClick={() => {
-						const dom = parse(value?.content || "")
-						const body = dom.querySelector('body')
-						const wordCount = Number(body?.textContent?.split(' ').length)
-						const symbolCount = Number(body?.textContent?.length)
+						const {wordCount,symbolCount} = textCalculation(value?.content || "")
 						setValue({ ...value, wordCount, symbolCount })
 						successToast('Chapter settings updated')
 						
@@ -42,9 +39,8 @@ export const UpdatableChapter = ({ updateChapter,  chapterId, ...defaultValue}: 
 					width={20}
 					height={20}
 					onClick={() => {
-						const dom = parse(value?.content || "")
-						const body = dom.querySelector('body')
-						navigator.clipboard.writeText(body?.textContent || "")
+						const chapterText =  new  DOMParser().parseFromString(value?.content || "", 'text/html').body.textContent
+						navigator.clipboard.writeText(chapterText || "")
 						successToast('Chapter copied to clipboard')
 					}}
 				/>

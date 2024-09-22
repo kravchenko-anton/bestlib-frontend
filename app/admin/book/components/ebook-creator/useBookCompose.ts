@@ -4,9 +4,19 @@ import { MutationKeys } from '@/utils/query-keys'
 import { errorToast, successToast } from '@/utils/toast'
 import type { UnfoldChapterType } from '@/validation/ebook/chapter.schema'
 import { useMutation } from '@tanstack/react-query'
-import { parse } from 'node-html-parser'
 import type { Dispatch, SetStateAction } from 'react'
 
+export const textCalculation = (text: string) => {
+	const dom = new DOMParser().parseFromString(text, 'text/html')
+	const body = dom.querySelector('body')
+	const wordCount = Number(body?.textContent?.split(' ').length)
+	const symbolCount = Number(body?.textContent?.length)
+	return {
+		wordCount,
+		symbolCount
+	}
+	
+}
 export const useBookCompose = ({
 	chapters,
 	setEBooks,
@@ -132,10 +142,7 @@ export const useBookCompose = ({
 					
 					upload({
 						chapters: chapters.map((chapter, index) => {
-							const dom = parse(chapter.content)
-							const body = dom.querySelector('body')
-							const wordCount = Number(body?.textContent?.split(' ').length)
-							const symbolCount = Number(body?.textContent?.length)
+							const {wordCount,symbolCount} = textCalculation(chapter.content)
 							return {
 								...chapter,
 								position: index + 1,
@@ -149,10 +156,7 @@ export const useBookCompose = ({
 	}
 	const calculateChapters = () => {
 		setEBooks( chapters.map((chapter, index) => {
-			const dom = parse(chapter.content)
-			const body = dom.querySelector('body')
-			const wordCount = Number(body?.textContent?.split(' ').length)
-			const symbolCount = Number(body?.textContent?.length)
+		const {wordCount,symbolCount} = textCalculation(chapter.content)
 			return {
 				...chapter,
 				position: index + 1,
