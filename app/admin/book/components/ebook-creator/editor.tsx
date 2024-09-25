@@ -3,6 +3,7 @@ import { TrimContentMenu } from '@/app/admin/book/components/ebook-creator/trim-
 import { useBookCompose } from '@/app/admin/book/components/ebook-creator/useBookCompose'
 import { Button, DropZone, Input, TextArea } from '@/components/ui'
 import { CaseSensitive } from '@/icons/case-sensitive'
+import { ChevronDown } from '@/icons/chevron-down'
 import { Close } from '@/icons/close'
 import { Copy } from '@/icons/copy'
 import { HardDriveDownload } from '@/icons/hard-drive-download'
@@ -51,7 +52,7 @@ const EbookComposer = <T extends Record<string, any>>({
 									
 										<TapComponent>
 											<div
-												title='download ebook (for validation)'
+												title='unstash eBook (restore book state from storage)'
 											>
 											<HardDriveDownload
 												width={33}
@@ -90,10 +91,12 @@ const EbookComposer = <T extends Record<string, any>>({
 
 												className='bg-bordered border-bordered cursor-pointer rounded border-[1px] p-1.5'
 												onClick={() => {
+													console.log(	books.state
+														.map(({ content }) => content).join(''))
 													navigator.clipboard.writeText(
 														JSON.stringify(
 																books.state
-																	.join('')
+																	.map(({ content }) => content).join('')
 														)
 													)
 													successToast('Ebook copied to clipboard')
@@ -145,6 +148,12 @@ const EbookComposer = <T extends Record<string, any>>({
 															<h2 className='text-sm w-[200px]'>
 																{`${chapter.symbolCount} symbols | ${chapter.wordCount} words`}
 															</h2>
+															<ChevronDown
+																width={34}
+																height={34}
+																className='bg-foreground border-bordered cursor-pointer rounded border-[1px] p-1.5'
+																onClick={() => books.addChapterAfter( chapter.id)}
+															/>
 															<Close
 																width={34}
 																height={34}

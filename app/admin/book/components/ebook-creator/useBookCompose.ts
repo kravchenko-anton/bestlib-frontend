@@ -90,6 +90,29 @@ export const useBookCompose = ({
 		))
 		successToast('Chapter removed')
 	}
+	
+	const addChapterAfter = (chapterId: string) => {
+			const index = chapters.findIndex(chapter => chapter.id === chapterId)
+			if (index === -1) return errorToast('Error adding chapter')
+			const newChapter = {
+				id: String(Date.now()),
+				title: '',
+				content: '',
+				position: index + 1,
+				wordCount: 0,
+				symbolCount: 0
+			}
+			
+			setEBooks(
+				[...chapters
+					.slice(0, index + 1), newChapter, ...chapters.slice(index + 1)]
+					.map((chapter, index) => ({
+						...chapter,
+						position: index + 1
+					}))
+			)
+			
+	}
 
 	const updateChapter = ({
 		chapterId,
@@ -171,6 +194,7 @@ console.log(chapters)
 			calculateChapters,
 			stashEBook,
 			unStashEBook,
+			addChapterAfter,
 			upload: unfoldWithUpload,
 			unfoldLoading,
 			state: chapters,
