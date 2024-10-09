@@ -1,13 +1,6 @@
-import { instance } from './interceptors';
-import { AuthApi } from 'api-client/clients/auth-api';
-import { BookApi } from 'api-client/clients/book-api';
-import { CatalogApi } from 'api-client/clients/catalog-api';
-import { EbookApi } from 'api-client/clients/ebook-api';
-import { GenreApi } from 'api-client/clients/genre-api';
-import { RecommendationApi } from 'api-client/clients/recommendation-api';
-import { StorageApi } from 'api-client/clients/storage-api';
-import { UserApi } from 'api-client/clients/user-api';
-import { AuthorApi } from '@/api-client';
+import { AdminAuthorApi, AdminBookApi, AdminUserApi, EbookApi, GenreApi, StorageApi } from '@/api-client'
+import { AuthApi } from 'api-client/clients/auth-api'
+import { instance } from './interceptors'
 
 export const webServerURL = process.env.SERVER_URL
 console.log('webServerURL', webServerURL)
@@ -19,33 +12,18 @@ const baseParameters = {
 
 const auth = new AuthApi(baseParameters, webServerURL, undefined)
 
-const book = new BookApi(baseParameters, webServerURL, instance)
-
-const catalog = new CatalogApi(baseParameters, webServerURL, instance)
-
+const author = new AdminAuthorApi(baseParameters, webServerURL, instance)
+const book = new AdminBookApi(baseParameters, webServerURL, instance)
+const user = new AdminUserApi(baseParameters, webServerURL, instance)
 const ebook = new EbookApi(baseParameters, webServerURL, instance)
-
-const genre = new GenreApi(baseParameters, webServerURL, instance)
-
-
-const recommendation = new RecommendationApi(
-	baseParameters,
-	webServerURL,
-	instance
-)
-
-const storage = new StorageApi(baseParameters, webServerURL, instance)
-
-const user = new UserApi(baseParameters, webServerURL, instance)
-const author = new AuthorApi(baseParameters, webServerURL, instance)
+	const genre = new GenreApi(baseParameters, webServerURL, instance)
+	const storage = new StorageApi(baseParameters, webServerURL, instance)
 export default {
 	auth,
 	book,
-	catalog,
 	author,
 	ebook,
 	genre,
-	recommendation,
 	storage,
 	user
 }
